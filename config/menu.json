@@ -1,0 +1,53 @@
+{
+  "logo": "/images/logo/logo.svg",
+  "header": [
+    {
+      "menu": "Home",
+      "link": "/",
+      "submenu": [
+        {
+          "page": "",
+          "pagelink": ""
+        }
+      ]
+    },
+    {
+      "menu": "Pages",
+      "link": "#",
+      "submenu": [
+        {
+          "page": "Privacy & Policy",
+          "pagelink": "privacy"
+        },
+        {
+          "page": "Terms & Condition",
+          "pagelink": "terms"
+        },
+        {
+          "page": "Elements",
+          "pagelink": "elements"
+        }
+      ]
+    },
+    {
+      "menu": "Contact",
+      "link": "/contact",
+      "submenu": [
+        {
+          "page": "",
+          "pagelink": ""
+        }
+      ]
+    },
+    {
+      "class": "fas fa-search",
+      "link": "",
+      "submenu": [
+        {
+          "page": "",
+          "pagelink": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "perameter": {
+    "title": "Techfeed",
+    "favicon": "/image/icon.png",
+    "pagination": "4",
+    "sharePost": true,
+    "contactFormAction": "https://airform.io/faruk.themefisher@gmail.com"
+  },
+
+  "footer": {
+    "copyright": "Copyright by your company",
+    "theme_copyright": true
+  },
+
+  "socialMedia": [
+    {
+      "icon": "fab fa-facebook-f",
+      "link": "https://www.facebook.com/#"
+    },
+    {
+      "icon": "fab fa-twitter",
+      "link": "https://twitter.com/?lang=en"
+    },
+    {
+      "icon": "fab fa-linkedin-in",
+      "link": "https://www.pinterest.com/#/_saved/"
+    },
+    {
+      "icon": "fab fa-github-alt",
+      "link": "https://www.instagram.com/#"
+    }
+  ]
+}

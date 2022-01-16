@@ -1,0 +1,32 @@
+{
+  "color": {
+    "themeColor": {
+      "primary": "#e8505b",
+      "body": "#ffff",
+      "border": "#eee"
+    },
+
+    "textColor": {
+      "default": "#666",
+      "dark": "#222",
+      "light": "#999"
+    },
+    "basicColor": {
+      "black": "#000",
+      "white": "#ffff",
+      "dark": "#333",
+      "light": "#ddd"
+    }
+  },
+  "font": {
+    "fontFamily": {
+      "primary": "Mulish:wght@400",
+      "primaryType": "sans-serif",
+      "icon": "Font Awesome 5 Free"
+    },
+    "fontSize": {
+      "base": "16px",
+      "font_scale": 1.25
+    }
+  }
+}
