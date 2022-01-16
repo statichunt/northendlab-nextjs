@@ -5,13 +5,8 @@ const Banner = ({ isBanner, bannerData }) => {
   return (
     <>
       {isBanner == true ? (
-        <div className="w-full h-80 relative">
-          <Image
-            src={bannerData.frontmatter.bgImage}
-            alt="alt"
-            layout="fill"
-            objectFit="cover"
-          ></Image>
+        <div className="  h-h600 ">
+          <div className="w-full h-h600  bg-bannerBg bg-no-repeat bg-cover  "></div>
         </div>
       ) : undefined}
     </>

@@ -2,7 +2,7 @@
   "perameter": {
     "title": "Techfeed",
     "favicon": "/image/icon.png",
-    "pagination": "4",
+    "pagination": 4,
     "sharePost": true,
     "contactFormAction": "https://airform.io/faruk.themefisher@gmail.com"
   },

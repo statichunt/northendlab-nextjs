@@ -1,16 +1,15 @@
 import { getAllBlogs, getSingleData } from "@/lib/posts";
-import { getAllFrontmatter } from "@/lib/utils/frontmatter";
 import Blog from "components/Blog";
 import Layout from "components/Layout/Layout";
 import React, { useState } from "react";
 import config from "../../../config/config.json";
 
-const Pages = ({ posts, page, bannerData }) => {
+const Pages = ({ posts, page, bannerData, pagination }) => {
   const [isBanner] = useState(true);
 
   return (
     <Layout isBanner={isBanner} bannerData={bannerData}>
-      <Blog posts={posts} page={page}></Blog>
+      <Blog posts={posts} page={page} pagination={pagination}></Blog>
     </Layout>
   );
 };
@@ -38,17 +37,16 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = ({ params }) => {
   const page = parseInt((params && params.page) || 1);
-
+  const { pagination } = config.perameter;
   const getPost = getAllBlogs();
   const getBannerData = getSingleData("Archive");
-  const frontmatter = getAllFrontmatter();
-  console.log(frontmatter);
 
   return {
     props: {
       posts: getPost,
       page: +page,
       bannerData: getBannerData,
+      pagination: pagination,
     },
   };
 };

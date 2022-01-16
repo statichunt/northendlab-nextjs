@@ -65,8 +65,11 @@ module.exports = {
       },
       height: {
         37: "18.75rem",
+        h600: "600px",
       },
-
+      backgroundImage: {
+        bannerBg: "url('/images/banner/banner-bg.svg')",
+      },
       colors: {
         primaryColor: themeStyle.color.themeColor.primary,
 
