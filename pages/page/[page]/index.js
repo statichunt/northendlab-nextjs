@@ -1,11 +1,16 @@
 import { getAllBlogs, getSingleData } from "@/lib/posts";
 import Blog from "components/Blog";
 import Layout from "components/Layout/Layout";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import config from "../../../config/config.json";
+import { AppContext } from "components/context/AppContext";
 
 const Pages = ({ posts, page, bannerData, pagination }) => {
   const [isBanner] = useState(true);
+  const [post, setPost] = useContext(AppContext);
+  useEffect(() => {
+    setPost(posts);
+  });
 
   return (
     <Layout isBanner={isBanner} bannerData={bannerData}>
@@ -17,7 +22,7 @@ const Pages = ({ posts, page, bannerData, pagination }) => {
 export default Pages;
 
 export const getStaticPaths = () => {
-  const getPost = getAllBlogs();
+  const getPost = getAllBlogs("Archive/posts");
   const { pagination } = config.perameter;
   let paths = [];
   const numOfPage = Math.ceil(getPost.length / pagination);
@@ -38,7 +43,7 @@ export const getStaticPaths = () => {
 export const getStaticProps = ({ params }) => {
   const page = parseInt((params && params.page) || 1);
   const { pagination } = config.perameter;
-  const getPost = getAllBlogs();
+  const getPost = getAllBlogs("Archive/posts");
   const getBannerData = getSingleData("Archive");
 
   return {

@@ -5,7 +5,7 @@ import Head from "next/head";
 import React from "react";
 import config from "../../config/style.json";
 
-const Layout = ({ children, isBanner, bannerData }) => {
+const Layout = ({ children, isBanner, bannerData, posts }) => {
   const { fontFamily } = config.font;
   return (
     <div className="">

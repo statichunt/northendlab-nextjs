@@ -5,11 +5,16 @@ import React from "react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Layout from "components/Layout/Layout";
 
 const Categories = ({ post }) => {
   const p = post.filter((p) => p.length > 0);
   console.log(p);
-  return <div></div>;
+  return (
+    <Layout>
+      <div className="relative"></div>
+    </Layout>
+  );
 };
 
 export async function getStaticPaths() {
@@ -37,7 +42,7 @@ export async function getStaticProps({ params }) {
       (c) => kebabCase(c) == params.categories
     );
 
-    const get = getAllBlogs();
+    const get = getAllBlogs("Archive/posts");
     const data = get.filter(function (e) {
       return e.category.some(function (a) {
         return filter.indexOf(a) != -1;

@@ -1,37 +1,40 @@
 import { getAllBlogs } from "@/lib/posts";
-import matter from "gray-matter";
+import Layout from "components/Layout/Layout";
+import SinglePost from "components/SinglePost/SinglePost";
 import React from "react";
-import fs from
 
-const Posts=()=>{
+const Single = ({ posts }) => {
+  return (
+    <Layout>
+      <div className="relative">
+        <SinglePost posts={posts}></SinglePost>
+      </div>
+    </Layout>
+  );
+};
+export const getStaticPaths = () => {
+  const getAllBlog = getAllBlogs("Archive/posts");
+  const paths = getAllBlog.map((d) => ({
+    params: {
+      posts: d.slug,
+    },
+  }));
+  console.log(paths);
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
-}
+export const getStaticProps = ({ params }) => {
+  const { posts } = params;
+  const post = getAllBlogs("Archive/posts");
+  const filterPost = post.filter((p) => p.slug == posts);
 
-// export const getStaticPaths=()=>{
-//   const posts=getAllBlogs()
-//   const paths=posts.map(slug=>({
-//     params:{
-//       posts:slug.slug
-//     }
-//   }))
-//   return{
-//     paths,
-//     fallback:false
-//   }
-// }
-// export const getStaticProps=({params})=>{
-//   const {posts}=params
-//   const singleMetaDataWithFrontMatter = fs.readFileSync(
-//     path.join("Archive/posts", posts + ".md"),
-//     "utf-8"
-//   );
-//  const {data:frontmatter,content}=matter(singleMetaDataWithFrontMatter)
-//   return {
-//     props:{
-//       frontmatter:frontmatter,
-//       content:content,
-//     }
-//   }
-
-// }
-export default Posts;
+  return {
+    props: {
+      posts: filterPost,
+    },
+  };
+};
+export default Single;

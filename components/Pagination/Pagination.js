@@ -5,9 +5,10 @@ const Pagination = ({ numOfPage, page }) => {
   const havePevPage = page > 1;
   const hasNextPage = numOfPage > page;
   let pageList = [];
-  for (let i = 1; i < numOfPage; i++) {
+  for (let i = 1; i <= numOfPage; i++) {
     pageList.push(i);
   }
+
   return (
     <div>
       <ul>

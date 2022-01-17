@@ -1,19 +1,40 @@
 import { kebabCase } from "@/lib/utils/slugger";
-import Pagination from "components/Pagination/Pagination";
+import { AppContext } from "components/context/AppContext";
 import { marked } from "marked";
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useState } from "react";
 
-const Blog = ({ posts, page, pagination }) => {
-  const indexOfLastPost = page * pagination;
-  const indexOfFirstPost = indexOfLastPost - pagination;
-  const numOfPage = Math.ceil(posts.length / pagination);
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+const Search = ({ setShowSearchBar }) => {
+  const [post] = useContext(AppContext);
+  const [showSearchPosts, setShowSearchPosts] = useState();
+  const searchPost = post.filter((p) => {
+    if (showSearchPosts == "") {
+      return "";
+    } else if (p.slug.toLowerCase().includes(showSearchPosts)) {
+      return p;
+    } else if (p.content.toLowerCase().includes(showSearchPosts)) {
+      return p;
+    }
+  });
 
   return (
-    <div className="container">
-      <div className="w-full md:w-2/3 mx-auto shadow-lg">
-        {currentPosts.map((d) => (
+    <div className="">
+      <input
+        type="text"
+        onChange={(e) => {
+          setShowSearchPosts(e.target.value);
+        }}
+      />{" "}
+      <a
+        onClick={() => {
+          setShowSearchBar(false);
+        }}
+      >
+        X
+      </a>
+      <div className="h-auto">
+        {" "}
+        {searchPost.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
@@ -48,11 +69,9 @@ const Blog = ({ posts, page, pagination }) => {
             </Link>
           </div>
         ))}
-
-        <Pagination page={page} numOfPage={numOfPage}></Pagination>
       </div>
     </div>
   );
 };
 
-export default Blog;
+export default Search;
