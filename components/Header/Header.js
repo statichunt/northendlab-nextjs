@@ -4,59 +4,105 @@ import Link from "next/dist/client/link";
 import menubar from "../../config/menu.json";
 import { useState } from "react";
 import Search from "components/Search/Search";
+import MobileMenu from "components/MobileMenu/MobileMenu";
 
-const Header = ({ isBanner, posts }) => {
+const Header = ({ navbar, isOpen, toggle }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
+  const [showSearchPosts, setShowSearchPosts] = useState();
+  const [searchItem, setSearchItem] = useState(true);
 
+  const handleSearch = () => {
+    if (searchItem == true) {
+      setSearchItem(!searchItem);
+    } else {
+      setSearchItem(true);
+    }
+    if (showSearchbar) {
+      setShowSearchBar(!showSearchbar);
+    }
+  };
+  console.log(searchItem);
   const { header, logo } = menubar;
   return (
     <>
-      {showSearchbar ? (
-        <div>
-          <Search setShowSearchBar={setShowSearchBar} posts={posts}></Search>
-        </div>
-      ) : (
-        <nav
-          className={
-            isBanner
-              ? "flex justify-between items-center py-8 w-full z-40 fixed"
-              : "flex justify-between items-center py-8 w-full z-40 sticky top-0"
-          }
-        >
-          <div className="w-52 h-8 relative">
-            <Link href="/" passHref>
-              <Image
-                src={logo}
-                alt="logo"
-                layout="fill"
-                // objectFit="cover"
-              ></Image>
-            </Link>
-          </div>
-          <ul>
-            {header.map((menu) =>
-              menu.class ? (
-                <i
-                  key={menu.class}
-                  className={`${menu.class} `}
-                  onKeyDown={(e) =>
-                    e.key == "Escape" && setShowSearchBar(false)
-                  }
-                  onClick={() => {
-                    setShowSearchBar(true);
-                  }}
-                ></i>
-              ) : (
-                <Link href={menu.link} key={menu.menu}>
-                  <a className="mr-4 px-8 py-4 text-textColor">
-                    <li className="inline-block">{menu.menu}</li>
-                  </a>
-                </Link>
-              )
+      <header
+        className={
+          navbar
+            ? "header top-0  sticky  z-40 bg-white shadow-lg"
+            : "header sticky  z-40 top-0 "
+        }
+      >
+        {showSearchbar ? (
+          <div className="lg:w-2/3 w-full mx-auto ">
+            <div className="flex items-center">
+              <input
+                type="text"
+                onChange={(e) => {
+                  setShowSearchPosts(e.target.value);
+                }}
+                className="w-full py-4 outline-none text-2xl"
+                placeholder="Tyepe Here"
+              />{" "}
+              <a className="text-h4" onClick={handleSearch}>
+                yyy<i className="fas fa-times"></i>
+              </a>
+            </div>
+
+            {searchItem == true && (
+              <Search showSearchPosts={showSearchPosts}></Search>
             )}
-          </ul>
-        </nav>
-      )}
+          </div>
+        ) : (
+          <nav className={"flex justify-between items-center  w-2/3 mx-auto "}>
+            <div className="w-52 h-8 relative">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="logo"
+                  layout="fill"
+                  // objectFit="cover"
+                ></Image>
+              </Link>
+            </div>
+            <div className=" lg:hidden">
+              <a onClick={toggle}>
+                {isOpen ? (
+                  <i className="fas fa-times"></i>
+                ) : (
+                  <i className="fas fa-bars"></i>
+                )}
+              </a>
+            </div>
+            <ul className=" hidden lg:block">
+              {header.map((menu) =>
+                menu.class ? (
+                  <i
+                    key={menu.class}
+                    className={`${menu.class} `}
+                    onClick={() => {
+                      setShowSearchBar(true);
+                    }}
+                  ></i>
+                ) : (
+                  <Link href={menu.link} key={menu.menu}>
+                    <a className="mr-4 px-8 py-4 text-textColor">
+                      <li className="inline-block">{menu.menu}</li>
+                    </a>
+                  </Link>
+                )
+              )}
+            </ul>
+          </nav>
+        )}
+
+        <MobileMenu
+          navbar={navbar}
+          toggle={toggle}
+          isOpen={isOpen}
+          showSearchbar={showSearchbar}
+          setShowSearchBar={setShowSearchBar}
+        ></MobileMenu>
+      </header>
     </>
   );
 };

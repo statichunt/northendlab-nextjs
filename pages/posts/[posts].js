@@ -19,7 +19,7 @@ export const getStaticPaths = () => {
       posts: d.slug,
     },
   }));
-  console.log(paths);
+
   return {
     paths,
     fallback: false,

@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .header {
+    @apply w-full  py-8 mx-auto;
+  }
+
   .markdown {
     @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-primary
     prose-li:font-primary
@@ -10,7 +14,7 @@
     prose-h2:text-h2
     prose-h3:text-h3
     prose-h4:text-h4
-    /* prose-a:hover */
+   
     prose-a:no-underline;
   }
 }

@@ -4,7 +4,7 @@ import React from "react";
 const Contact = () => {
   return (
     <Layout>
-      <div className="relative h-96">
+      <div className="relative h-96 py-20">
         <h2>hi hello</h2>
         <div className=" h-96">
           <h2>hi hello</h2>

@@ -10,35 +10,37 @@ const Footer = () => {
 
   return (
     <div className="container text-center border-t border-borderColor mt-8">
-      <div className="flex justify-between items-center  py-8">
-        <div className="w-1/3">
-          <div className="w-52 h-8 relative">
-            <Link href="/" passHref>
-              <Image
-                src={logo}
-                alt="logo"
-                layout="fill"
-                // objectFit="cover"
-              ></Image>
-            </Link>
+      <footer className="w-2/3 mx-auto">
+        <div className="flex justify-between items-center  py-8">
+          <div className="w-1/3">
+            <div className="w-52 h-8 relative">
+              <Link href="/" passHref>
+                <Image
+                  src={logo}
+                  alt="logo"
+                  layout="fill"
+                  // objectFit="cover"
+                ></Image>
+              </Link>
+            </div>
+          </div>
+          <div className="w-1/3">
+            <p>
+              <span>contact</span>
+            </p>
+          </div>
+          <div className="w-1/3 pl-0">
+            {socialMedia.map((i) => (
+              <a key={i.icon} className="mr-8">
+                <i className={i.icon}></i>
+              </a>
+            ))}
           </div>
         </div>
-        <div className="w-1/3">
-          <p>
-            <span>contact</span>
-          </p>
+        <div className="text-center">
+          <p>{footer.copyright}</p>
         </div>
-        <div className="w-1/3 pl-0">
-          {socialMedia.map((i) => (
-            <a key={i.icon} className="mr-8">
-              <i className={i.icon}></i>
-            </a>
-          ))}
-        </div>
-      </div>
-      <div className="text-center">
-        <p>{footer.copyright}</p>
-      </div>
+      </footer>
     </div>
   );
 };

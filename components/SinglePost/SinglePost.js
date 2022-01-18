@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { marked } from "marked";
+import { kebabCase } from "@/lib/utils/slugger";
 
 const SinglePost = ({ posts }) => {
   return (
@@ -9,12 +10,14 @@ const SinglePost = ({ posts }) => {
       <div className="font-primary">
         <h3 className="font-semibold text-h3">{posts[0].frontmatter.title}</h3>
         <p className="text-textLight">
-          <a>{posts[0].frontmatter.author}</a>,{" "}
-          <a>{posts[0].frontmatter.date}</a>,
+          <Link href={`/author/${kebabCase(posts[0].frontmatter.author)}`}>
+            <a>{posts[0].frontmatter.author}</a>
+          </Link>
+          , <a>{posts[0].frontmatter.date}</a>,
           {posts[0].category.map((c) => (
-            <a className="mr-4" key={c}>
-              {c}
-            </a>
+            <Link key={c} href={`/categories/${kebabCase(c)}`}>
+              <a className="mr-4">{c}</a>
+            </Link>
           ))}
         </p>
 
@@ -28,7 +31,7 @@ const SinglePost = ({ posts }) => {
         </div>
         <div
           dangerouslySetInnerHTML={{ __html: marked.parse(posts[0].content) }}
-          className="markdown"
+          className=" markdown"
         ></div>
       </div>
     </div>

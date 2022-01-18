@@ -1,11 +1,38 @@
 import Banner from "components/Banner";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
+// import MobileMenu from "components/MobileMenu/MobileMenu";
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import config from "../../config/style.json";
 
-const Layout = ({ children, isBanner, bannerData, posts }) => {
+const Layout = ({ children }) => {
+  const [navbar, setNavbar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY) {
+        setNavbar(true);
+      } else {
+        setNavbar(false);
+      }
+    };
+
+    window.addEventListener("scroll", changeBackground);
+
+    const handleMobileMenu = () => {
+      if (window.innerWidth > 1024 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleMobileMenu);
+    return () => {
+      window.removeEventListener("resize", handleMobileMenu);
+    };
+  });
   const { fontFamily } = config.font;
   return (
     <div className="">
@@ -29,8 +56,9 @@ const Layout = ({ children, isBanner, bannerData, posts }) => {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <Header isBanner={isBanner}></Header>
-      <Banner isBanner={isBanner} bannerData={bannerData}></Banner>
+      <Header navbar={navbar} toggle={toggle} isOpen={isOpen}></Header>
+      {/* <MobileMenu toggle={toggle} isOpen={isOpen}></MobileMenu> */}
+
       {children}
       <Footer></Footer>
     </div>

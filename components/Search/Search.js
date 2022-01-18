@@ -2,13 +2,13 @@ import { kebabCase } from "@/lib/utils/slugger";
 import { AppContext } from "components/context/AppContext";
 import { marked } from "marked";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
-const Search = ({ setShowSearchBar }) => {
+const Search = ({ showSearchPosts }) => {
   const [post] = useContext(AppContext);
-  const [showSearchPosts, setShowSearchPosts] = useState();
-  const searchPost = post.filter((p) => {
-    if (showSearchPosts == "") {
+
+  let searchPost = post.filter((p) => {
+    if (showSearchPosts === "") {
       return "";
     } else if (p.slug.toLowerCase().includes(showSearchPosts)) {
       return p;
@@ -18,20 +18,7 @@ const Search = ({ setShowSearchBar }) => {
   });
 
   return (
-    <div className="">
-      <input
-        type="text"
-        onChange={(e) => {
-          setShowSearchPosts(e.target.value);
-        }}
-      />{" "}
-      <a
-        onClick={() => {
-          setShowSearchBar(false);
-        }}
-      >
-        X
-      </a>
+    <div className={"w-full   bg-white"}>
       <div className="h-auto">
         {" "}
         {searchPost.map((d) => (

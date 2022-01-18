@@ -9,7 +9,7 @@ import Layout from "components/Layout/Layout";
 
 const Categories = ({ post }) => {
   const p = post.filter((p) => p.length > 0);
-  console.log(p);
+
   return (
     <Layout>
       <div className="relative"></div>

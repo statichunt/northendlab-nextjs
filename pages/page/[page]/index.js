@@ -4,17 +4,20 @@ import Layout from "components/Layout/Layout";
 import React, { useContext, useEffect, useState } from "react";
 import config from "../../../config/config.json";
 import { AppContext } from "components/context/AppContext";
+import Banner from "components/Banner";
 
 const Pages = ({ posts, page, bannerData, pagination }) => {
-  const [isBanner] = useState(true);
   const [post, setPost] = useContext(AppContext);
   useEffect(() => {
     setPost(posts);
   });
 
   return (
-    <Layout isBanner={isBanner} bannerData={bannerData}>
-      <Blog posts={posts} page={page} pagination={pagination}></Blog>
+    <Layout>
+      <div className="relative">
+        <Banner></Banner>
+        <Blog posts={posts} page={page} pagination={pagination}></Blog>
+      </div>
     </Layout>
   );
 };

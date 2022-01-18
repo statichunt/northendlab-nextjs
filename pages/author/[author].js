@@ -30,7 +30,7 @@ export const getStaticPaths = () => {
 export const getStaticProps = ({ params }) => {
   const { author } = params;
   const authorData = getAllBlogs("Archive/author");
-  console.log(authorData.map((d) => d.frontmatter.title));
+
   const filterAuthor = authorData.filter(
     (a) => kebabCase(a.frontmatter.title) == author
   );
@@ -38,7 +38,7 @@ export const getStaticProps = ({ params }) => {
   const filterAuthorBlog = getAllBlog.filter(
     (data) => kebabCase(data.frontmatter.author) == author
   );
-  console.log(filterAuthorBlog.length);
+
   return {
     props: {
       posts: "hi hello",
