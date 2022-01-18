@@ -9,19 +9,21 @@ import MobileMenu from "components/MobileMenu/MobileMenu";
 const Header = ({ navbar, isOpen, toggle }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
   const [showSearchPosts, setShowSearchPosts] = useState();
-  const [searchItem, setSearchItem] = useState(true);
+  const [searchItem, setSearchItem] = useState(false);
+  const handleSearchBar = (e) => {
+    setShowSearchBar(true);
+    setShowSearchPosts("");
 
+    setSearchItem(true);
+  };
   const handleSearch = () => {
-    if (searchItem == true) {
-      setSearchItem(!searchItem);
-    } else {
-      setSearchItem(true);
-    }
+    setSearchItem(false);
+
     if (showSearchbar) {
       setShowSearchBar(!showSearchbar);
     }
   };
-  console.log(searchItem);
+
   const { header, logo } = menubar;
   return (
     <>
@@ -44,13 +46,11 @@ const Header = ({ navbar, isOpen, toggle }) => {
                 placeholder="Tyepe Here"
               />{" "}
               <a className="text-h4" onClick={handleSearch}>
-                yyy<i className="fas fa-times"></i>
+                <i className="fas fa-times"></i>
               </a>
             </div>
 
-            {searchItem == true && (
-              <Search showSearchPosts={showSearchPosts}></Search>
-            )}
+            <Search showSearchPosts={showSearchPosts}></Search>
           </div>
         ) : (
           <nav className={"flex justify-between items-center  w-2/3 mx-auto "}>
@@ -79,9 +79,7 @@ const Header = ({ navbar, isOpen, toggle }) => {
                   <i
                     key={menu.class}
                     className={`${menu.class} `}
-                    onClick={() => {
-                      setShowSearchBar(true);
-                    }}
+                    onClick={handleSearchBar}
                   ></i>
                 ) : (
                   <Link href={menu.link} key={menu.menu}>

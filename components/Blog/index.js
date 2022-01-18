@@ -12,13 +12,13 @@ const Blog = ({ posts, page, pagination }) => {
 
   return (
     <div className="container">
-      <div className="w-full md:w-2/3 mx-auto shadow-lg">
+      <div className="w-full md:w-1/2 mx-auto shadow-lg">
         {currentPosts.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
           >
-            <Link href={`posts/${d.slug}`} passHref>
+            <Link href={`/posts/${d.slug}`} passHref>
               <h3 className="text-primaryColor text-h3 ">
                 {d.frontmatter.title}
               </h3>
