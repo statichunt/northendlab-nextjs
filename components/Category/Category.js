@@ -6,7 +6,7 @@ import { kebabCase } from "@/lib/utils/slugger";
 const Category = ({ posts, category }) => {
   return (
     <div className="w-full lg:w-1/2 mx-auto">
-      <h2 className="text-h2 font-primary text-dark font-bold ">
+      <h2 className="text-h2 font-primary text-dark font-bold p-8">
         Posts related to <span className="text-primaryColor">{category}</span>
       </h2>
       <div className="w-full  shadow-lg p-8">

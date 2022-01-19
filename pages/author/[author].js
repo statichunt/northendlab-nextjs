@@ -12,7 +12,7 @@ const AuthorData = ({ post, authorPost }) => {
       <div className="relative">
         <div className="lg:w-1/2 w-full mx-auto">
           <Author post={post}></Author>
-          <h2 className="text-h2 font-bold text-dark my-4">
+          <h2 className="text-h2 font-bold text-dark my-4 px-8">
             Posts by <span className="text-primaryColor">{author}</span>
           </h2>
           <AuthorPost posts={authorPost}></AuthorPost>
