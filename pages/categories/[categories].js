@@ -6,13 +6,17 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Layout from "components/Layout/Layout";
+import Category from "components/Category/Category";
 
-const Categories = ({ post }) => {
+const Categories = ({ post, category }) => {
   const p = post.filter((p) => p.length > 0);
-
+  const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
+  console.log(c[0]);
   return (
     <Layout>
-      <div className="relative"></div>
+      <div className="relative">
+        <Category posts={p[0]} category={c[0]}></Category>
+      </div>
     </Layout>
   );
 };
@@ -52,7 +56,7 @@ export async function getStaticProps({ params }) {
     return data;
   });
 
-  return { props: { post: posts } };
+  return { props: { post: posts, category: params.categories } };
 }
 
 export default Categories;

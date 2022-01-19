@@ -2,11 +2,12 @@ import Banner from "components/Banner";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
 // import MobileMenu from "components/MobileMenu/MobileMenu";
+
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import config from "../../config/style.json";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isFixed }) => {
   const [navbar, setNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -56,7 +57,12 @@ const Layout = ({ children }) => {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <Header navbar={navbar} toggle={toggle} isOpen={isOpen}></Header>
+      <Header
+        navbar={navbar}
+        toggle={toggle}
+        isOpen={isOpen}
+        isFixed={isFixed}
+      ></Header>
       {/* <MobileMenu toggle={toggle} isOpen={isOpen}></MobileMenu> */}
 
       {children}

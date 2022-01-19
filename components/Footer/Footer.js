@@ -9,10 +9,10 @@ const Footer = () => {
   const { logo } = menu;
 
   return (
-    <div className="container text-center border-t border-borderColor mt-8">
+    <div className="container mx-auto text-center border-t border-borderColor mt-8">
       <footer className="w-2/3 mx-auto">
-        <div className="flex justify-between items-center  py-8">
-          <div className="w-1/3">
+        <div className="grid lg:grid-cols-3 py-8">
+          <div className="mx-auto lg:mx-px flex items-center my-6 ">
             <div className="w-52 h-8 relative">
               <Link href="/" passHref>
                 <Image
@@ -24,14 +24,17 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="w-1/3">
+          <div className="justify-center flex items-center ">
             <p>
               <span>contact</span>
             </p>
           </div>
-          <div className="w-1/3 pl-0">
+          <div className="flex lg:justify-start justify-center  items-center my-6">
             {socialMedia.map((i) => (
-              <a key={i.icon} className="mr-8">
+              <a
+                key={i.icon}
+                className="mx-4 hover:bg-primaryColor hover:text-white text-primaryColor w-12 h-12 flex justify-center items-center rounded-full border border-primaryColor"
+              >
                 <i className={i.icon}></i>
               </a>
             ))}

@@ -6,18 +6,14 @@ import { useState } from "react";
 import Search from "components/Search/Search";
 import MobileMenu from "components/MobileMenu/MobileMenu";
 
-const Header = ({ navbar, isOpen, toggle }) => {
+const Header = ({ navbar, isOpen, toggle, isFixed }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
   const [showSearchPosts, setShowSearchPosts] = useState();
   const [searchItem, setSearchItem] = useState(false);
-  const handleSearchBar = (e) => {
-    setShowSearchBar(true);
-    setShowSearchPosts("");
 
-    setSearchItem(true);
-  };
   const handleSearch = () => {
-    setSearchItem(false);
+    setShowSearchPosts("");
+    setSearchItem(!searchItem);
 
     if (showSearchbar) {
       setShowSearchBar(!showSearchbar);
@@ -30,8 +26,8 @@ const Header = ({ navbar, isOpen, toggle }) => {
       <header
         className={
           navbar
-            ? "header top-0  sticky  z-40 bg-white shadow-lg"
-            : "header sticky  z-40 top-0 "
+            ? `header top-0 sticky  z-40 bg-white shadow-lg`
+            : `header ${isFixed ? "fixed" : "sticky"}  z-40 top-0 `
         }
       >
         {showSearchbar ? (
@@ -45,7 +41,7 @@ const Header = ({ navbar, isOpen, toggle }) => {
                 className="w-full py-4 outline-none text-2xl"
                 placeholder="Tyepe Here"
               />{" "}
-              <a className="text-h4" onClick={handleSearch}>
+              <a className="text-h4 cursor-pointer" onClick={handleSearch}>
                 <i className="fas fa-times"></i>
               </a>
             </div>
@@ -65,7 +61,7 @@ const Header = ({ navbar, isOpen, toggle }) => {
               </Link>
             </div>
             <div className=" lg:hidden">
-              <a onClick={toggle}>
+              <a onClick={toggle} className="text-4xl">
                 {isOpen ? (
                   <i className="fas fa-times"></i>
                 ) : (
@@ -74,21 +70,25 @@ const Header = ({ navbar, isOpen, toggle }) => {
               </a>
             </div>
             <ul className=" hidden lg:block">
-              {header.map((menu) =>
-                menu.class ? (
-                  <i
-                    key={menu.class}
-                    className={`${menu.class} `}
-                    onClick={handleSearchBar}
-                  ></i>
-                ) : (
-                  <Link href={menu.link} key={menu.menu}>
-                    <a className="mr-4 px-8 py-4 text-textColor">
-                      <li className="inline-block">{menu.menu}</li>
-                    </a>
-                  </Link>
-                )
-              )}
+              {header.map((menu) => (
+                <Link href={menu.link} key={menu.menu}>
+                  <a className="mr-4 px-8 py-4 text-textColor">
+                    <li className="inline-block">
+                      {menu.menu ? (
+                        menu.menu
+                      ) : (
+                        <i
+                          key={menu.class}
+                          className={`${menu.class} `}
+                          onClick={() => {
+                            setShowSearchBar(true);
+                          }}
+                        ></i>
+                      )}
+                    </li>
+                  </a>
+                </Link>
+              ))}
             </ul>
           </nav>
         )}

@@ -1,19 +1,16 @@
-import { kebabCase } from "@/lib/utils/slugger";
-import Pagination from "components/Pagination/Pagination";
-import { marked } from "marked";
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { marked } from "marked";
+import { kebabCase } from "@/lib/utils/slugger";
 
-const Blog = ({ posts, page, pagination }) => {
-  const indexOfLastPost = page * pagination;
-  const indexOfFirstPost = indexOfLastPost - pagination;
-  const numOfPage = Math.ceil(posts.length / pagination);
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
+const Category = ({ posts, category }) => {
   return (
-    <div className="container mx-auto">
-      <div className="w-full lg:w-1/2 mx-auto shadow-lg p-8">
-        {currentPosts.map((d) => (
+    <div className="w-full lg:w-1/2 mx-auto">
+      <h2 className="text-h2 font-primary text-dark font-bold ">
+        Posts related to <span className="text-primaryColor">{category}</span>
+      </h2>
+      <div className="w-full  shadow-lg p-8">
+        {posts.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
@@ -50,11 +47,9 @@ const Blog = ({ posts, page, pagination }) => {
             </Link>
           </div>
         ))}
-
-        <Pagination page={page} numOfPage={numOfPage}></Pagination>
       </div>
     </div>
   );
 };
 
-export default Blog;
+export default Category;

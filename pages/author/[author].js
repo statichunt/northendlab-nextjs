@@ -6,11 +6,17 @@ import Layout from "components/Layout/Layout";
 import React from "react";
 
 const AuthorData = ({ post, authorPost }) => {
+  const author = [...new Set(post[0].frontmatter.title)];
   return (
     <Layout>
       <div className="relative">
-        <Author post={post}></Author>
-        <AuthorPost posts={authorPost}></AuthorPost>
+        <div className="lg:w-1/2 w-full mx-auto">
+          <Author post={post}></Author>
+          <h2 className="text-h2 font-bold text-dark my-4">
+            Posts by <span className="text-primaryColor">{author}</span>
+          </h2>
+          <AuthorPost posts={authorPost}></AuthorPost>
+        </div>
       </div>
     </Layout>
   );
@@ -49,6 +55,7 @@ export const getStaticProps = ({ params }) => {
     props: {
       post: filterAuthor,
       authorPost: filterAuthorBlog,
+      author: author,
     },
   };
 };

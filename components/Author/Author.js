@@ -1,11 +1,10 @@
 import Image from "next/image";
 import React from "react";
 import { marked } from "marked";
-import { content } from "tailwind.config";
 
 const Author = ({ post }) => {
   return (
-    <div className="w-1/2 shadow-lg mx-auto p-8 my-4">
+    <div className="w-full  shadow-lg  p-8 my-4">
       <div>
         <div className="flex justify-center items-center">
           <div className="relative w-80 h-80">

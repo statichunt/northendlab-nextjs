@@ -7,13 +7,14 @@ import { AppContext } from "components/context/AppContext";
 import Banner from "components/Banner";
 
 const Pages = ({ posts, page, bannerData, pagination }) => {
+  const [isFixed] = useState(true);
   const [post, setPost] = useContext(AppContext);
   useEffect(() => {
     setPost(posts);
   });
 
   return (
-    <Layout>
+    <Layout isFixed={isFixed}>
       <div className="relative">
         <Banner></Banner>
         <Blog posts={posts} page={page} pagination={pagination}></Blog>
