@@ -1,23 +1,24 @@
+import { getSingleData } from "@/lib/posts";
+import ContactPage from "components/ContactPage/ContactPage";
 import Layout from "components/Layout/Layout";
 import React from "react";
 
-const Contact = () => {
+const Contact = ({ contactData }) => {
   return (
     <Layout>
-      <div className="relative h-96 py-20">
-        <h2>hi hello</h2>
-        <div className=" h-96">
-          <h2>hi hello</h2>
-        </div>
-        <div className=" h-96">
-          <h2>hi hello</h2>
-        </div>
-        <div className=" h-96">
-          <h2>hi hello</h2>
-        </div>
-      </div>
+      <ContactPage contactData={contactData}></ContactPage>
     </Layout>
   );
+};
+
+export const getStaticProps = () => {
+  const contactData = getSingleData("Archive");
+  console.log(contactData);
+  return {
+    props: {
+      contactData: contactData,
+    },
+  };
 };
 
 export default Contact;
