@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { marked } from "marked";
 import { kebabCase } from "@/lib/utils/slugger";
+import { dateFormate } from "@/lib/utils/dateFormate";
 
 const SinglePost = ({ posts }) => {
   return (
@@ -13,7 +14,7 @@ const SinglePost = ({ posts }) => {
           <Link href={`/author/${kebabCase(posts[0].frontmatter.author)}`}>
             <a>{posts[0].frontmatter.author}</a>
           </Link>
-          , <a>{posts[0].frontmatter.date}</a>,
+          , <span>{dateFormate(posts[0].frontmatter.date)}</span>,
           {posts[0].category.map((c) => (
             <Link key={c} href={`/categories/${kebabCase(c)}`}>
               <a className="mr-4">{c}</a>

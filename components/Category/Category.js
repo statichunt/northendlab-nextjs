@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { marked } from "marked";
 import { kebabCase } from "@/lib/utils/slugger";
+import { dateFormate } from "@/lib/utils/dateFormate";
 
 const Category = ({ posts, category }) => {
   return (
@@ -26,7 +27,7 @@ const Category = ({ posts, category }) => {
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
                 {d.frontmatter.author}
               </Link>{" "}
-              {d.frontmatter.date}{" "}
+              {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
                 <Link href={`categories/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>

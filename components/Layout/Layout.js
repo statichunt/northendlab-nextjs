@@ -5,9 +5,9 @@ import Header from "components/Header/Header";
 
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
-import config from "../../config/style.json";
+import style from "../../config/style.json";
 
-const Layout = ({ children, isFixed }) => {
+const Layout = ({ children, isFixed, title }) => {
   const [navbar, setNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -34,10 +34,12 @@ const Layout = ({ children, isFixed }) => {
       window.removeEventListener("resize", handleMobileMenu);
     };
   });
-  const { fontFamily } = config.font;
+  const { fontFamily } = style.font;
+
   return (
     <div className="">
       <Head>
+        <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />

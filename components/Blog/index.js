@@ -1,3 +1,4 @@
+import { dateFormate } from "@/lib/utils/dateFormate";
 import { kebabCase } from "@/lib/utils/slugger";
 import Pagination from "components/Pagination/Pagination";
 import { marked } from "marked";
@@ -27,9 +28,9 @@ const Blog = ({ posts, page, pagination }) => {
             </Link>
             <p className="text-textLight mb-4">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
-                {d.frontmatter.author}
-              </Link>{" "}
-              {d.frontmatter.date}{" "}
+                <a>{d.frontmatter.author}</a>
+              </Link>
+              , {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
                 <Link href={`categories/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>

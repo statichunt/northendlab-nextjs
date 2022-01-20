@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import config from "../../../config/config.json";
 import { AppContext } from "components/context/AppContext";
 import Banner from "components/Banner";
+import { sortByDate } from "@/lib/utils/dateFormate";
 
 const Pages = ({ posts, page, bannerData, pagination }) => {
   const [isFixed] = useState(true);
@@ -12,12 +13,13 @@ const Pages = ({ posts, page, bannerData, pagination }) => {
   useEffect(() => {
     setPost(posts);
   });
+  const sortByDates = sortByDate(posts);
 
   return (
-    <Layout isFixed={isFixed}>
+    <Layout isFixed={isFixed} title="Northendlab | Blog Template">
       <div className="relative">
         <Banner></Banner>
-        <Blog posts={posts} page={page} pagination={pagination}></Blog>
+        <Blog posts={sortByDates} page={page} pagination={pagination}></Blog>
       </div>
     </Layout>
   );

@@ -5,7 +5,7 @@ import React from "react";
 
 const Contact = ({ contactData }) => {
   return (
-    <Layout>
+    <Layout title={contactData.frontmatter.title}>
       <ContactPage contactData={contactData}></ContactPage>
     </Layout>
   );

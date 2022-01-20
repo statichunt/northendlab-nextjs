@@ -8,7 +8,7 @@ import React from "react";
 const AuthorData = ({ post, authorPost }) => {
   const author = [...new Set(post[0].frontmatter.title)];
   return (
-    <Layout>
+    <Layout title={author}>
       <div className="relative">
         <div className="lg:w-1/2 w-full mx-auto">
           <Author post={post}></Author>

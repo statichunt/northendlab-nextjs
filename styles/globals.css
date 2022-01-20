@@ -6,7 +6,9 @@
   .header {
     @apply w-full  py-8 mx-auto;
   }
-
+  .inputField {
+    @apply px-8 py-4 my-4 border border-borderColor outline-none text-textColor;
+  }
   .markdown {
     @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-primary
     prose-li:font-primary

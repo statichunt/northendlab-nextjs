@@ -3,9 +3,9 @@ import Layout from "components/Layout/Layout";
 import SinglePost from "components/SinglePost/SinglePost";
 import React from "react";
 
-const Single = ({ posts }) => {
+const Single = ({ posts, slug }) => {
   return (
-    <Layout>
+    <Layout title={slug}>
       <div className="relative">
         <SinglePost posts={posts}></SinglePost>
       </div>
@@ -34,6 +34,7 @@ export const getStaticProps = ({ params }) => {
   return {
     props: {
       posts: filterPost,
+      slug: posts,
     },
   };
 };

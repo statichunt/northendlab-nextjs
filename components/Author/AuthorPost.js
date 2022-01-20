@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { kebabCase } from "@/lib/utils/slugger";
 import { marked } from "marked";
+import { dateFormate } from "@/lib/utils/dateFormate";
 
 const AuthorPost = ({ posts }) => {
   return (
@@ -19,12 +20,12 @@ const AuthorPost = ({ posts }) => {
             </a>
           </Link>
           <p className="text-textLight mb-4">
-            <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
-              {d.frontmatter.author}
-            </Link>{" "}
-            {d.frontmatter.date}{" "}
+            <Link href={`/author/${kebabCase(d.frontmatter.author)}`} passHref>
+              <a>{d.frontmatter.author}</a>
+            </Link>
+            , {dateFormate(d.frontmatter.date)},{" "}
             {d.frontmatter.categories.map((c) => (
-              <Link href={`/categories/${kebabCase(c)}`} key={c}>
+              <Link href={`/categories/${kebabCase(c)}`} key={c} passHref>
                 <a className="mr-2">{`${c}`}</a>
               </Link>
             ))}
@@ -36,7 +37,7 @@ const AuthorPost = ({ posts }) => {
               __html: marked.parse(d.content.slice(0, 141)),
             }}
           ></div>
-          <Link href={`/posts/${d.slug}`}>
+          <Link href={`/posts/${d.slug}`} passHref>
             <a className="text-primaryColor border-b border-primaryColor">
               Read more
             </a>

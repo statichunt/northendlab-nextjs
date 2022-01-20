@@ -13,7 +13,7 @@ const Categories = ({ post, category }) => {
   const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
 
   return (
-    <Layout>
+    <Layout title={c[0]}>
       <div className="relative">
         <Category posts={p[0]} category={c[0]}></Category>
       </div>
