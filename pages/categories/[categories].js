@@ -35,10 +35,10 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }) {
-  const file = fs.readdirSync(path.join("Archive/posts"));
+  const file = fs.readdirSync(path.join("content/posts"));
   const posts = file.map((file) => {
     const metaDataWithFrontMatter = fs.readFileSync(
-      path.join("Archive/posts", file),
+      path.join("content/posts", file),
       "utf-8"
     );
     const { data: frontmatter, content } = matter(metaDataWithFrontMatter);
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
       (c) => kebabCase(c) == params.categories
     );
 
-    const get = getAllBlogs("Archive/posts");
+    const get = getAllBlogs("content/posts");
     const data = get.filter(function (e) {
       return e.category.some(function (a) {
         return filter.indexOf(a) != -1;

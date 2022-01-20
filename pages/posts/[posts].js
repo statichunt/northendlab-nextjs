@@ -13,7 +13,7 @@ const Single = ({ posts, slug }) => {
   );
 };
 export const getStaticPaths = () => {
-  const getAllBlog = getAllBlogs("Archive/posts");
+  const getAllBlog = getAllBlogs("content/posts");
   const paths = getAllBlog.map((d) => ({
     params: {
       posts: d.slug,
@@ -28,7 +28,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = ({ params }) => {
   const { posts } = params;
-  const post = getAllBlogs("Archive/posts");
+  const post = getAllBlogs("content/posts");
   const filterPost = post.filter((p) => p.slug == posts);
 
   return {

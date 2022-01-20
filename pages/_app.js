@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <link rel="icon" href={perameter.favicon}></link>
       </Head>
-      <CookieConsent debug={true} buttonText="Sure man!!" expires={150}>
+      <CookieConsent buttonText="Sure man!!" expires={150}>
         this is coocke
       </CookieConsent>
       <Component {...pageProps} />

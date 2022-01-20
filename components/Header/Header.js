@@ -5,11 +5,13 @@ import menubar from "../../config/menu.json";
 import { useState } from "react";
 import Search from "components/Search/Search";
 import MobileMenu from "components/MobileMenu/MobileMenu";
+import { useRouter } from "next/router";
 
 const Header = ({ navbar, isOpen, toggle, isFixed }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
   const [showSearchPosts, setShowSearchPosts] = useState();
   const [searchItem, setSearchItem] = useState(false);
+  const router = useRouter();
 
   const handleSearch = () => {
     setShowSearchPosts("");
@@ -26,7 +28,9 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
       <header
         className={
           navbar
-            ? `header top-0 sticky  z-40 bg-white shadow-lg`
+            ? `header top-0  ${
+                isFixed ? "fixed" : "sticky"
+              }  z-40 bg-white shadow-lg`
             : `header ${isFixed ? "fixed" : "sticky"}  z-40 top-0 `
         }
       >
@@ -50,16 +54,19 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
           </div>
         ) : (
           <nav className={"flex justify-between items-center  w-2/3 mx-auto "}>
-            <div className="w-52 h-8 relative">
-              <Link href="/">
-                <Image
-                  src={logo}
-                  alt="logo"
-                  layout="fill"
-                  // objectFit="cover"
-                ></Image>
-              </Link>
-            </div>
+            <Link href="/">
+              <a>
+                <div className="w-52 h-8 relative">
+                  <Image
+                    src={logo}
+                    alt="logo"
+                    layout="fill"
+                    // objectFit="cover"
+                  ></Image>
+                </div>
+              </a>
+            </Link>
+
             <div className=" lg:hidden">
               <a onClick={toggle} className="text-4xl">
                 {isOpen ? (

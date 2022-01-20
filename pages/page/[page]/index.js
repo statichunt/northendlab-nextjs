@@ -28,7 +28,7 @@ const Pages = ({ posts, page, bannerData, pagination }) => {
 export default Pages;
 
 export const getStaticPaths = () => {
-  const getPost = getAllBlogs("Archive/posts");
+  const getPost = getAllBlogs("content/posts");
   const { pagination } = config.perameter;
   let paths = [];
   const numOfPage = Math.ceil(getPost.length / pagination);
@@ -49,8 +49,8 @@ export const getStaticPaths = () => {
 export const getStaticProps = ({ params }) => {
   const page = parseInt((params && params.page) || 1);
   const { pagination } = config.perameter;
-  const getPost = getAllBlogs("Archive/posts");
-  const getBannerData = getSingleData("Archive");
+  const getPost = getAllBlogs("content/posts");
+  const getBannerData = getSingleData("content");
 
   return {
     props: {

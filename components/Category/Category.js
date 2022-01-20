@@ -29,7 +29,7 @@ const Category = ({ posts, category }) => {
               </Link>{" "}
               {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
-                <Link href={`categories/${kebabCase(c)}`} key={c}>
+                <Link href={`/categories/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>
                 </Link>
               ))}

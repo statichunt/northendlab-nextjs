@@ -6,11 +6,12 @@ import React, { useContext } from "react";
 
 const Search = ({ showSearchPosts }) => {
   const [post] = useContext(AppContext);
-
+  console.log(showSearchPosts.toLowerCase());
   let searchPost = post.filter((p) => {
+    console.log(p.frontmatter.title.toLowerCase());
     if (showSearchPosts === "") {
       return "";
-    } else if (p.slug.toLowerCase().includes(showSearchPosts)) {
+    } else if (p.frontmatter.title.toLowerCase().includes(showSearchPosts)) {
       return p;
     } else if (p.content.toLowerCase().includes(showSearchPosts)) {
       return p;

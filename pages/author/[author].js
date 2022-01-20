@@ -25,7 +25,7 @@ const AuthorData = ({ post, authorPost }) => {
 export default AuthorData;
 
 export const getStaticPaths = () => {
-  const getAllBlog = getAllBlogs("Archive/posts");
+  const getAllBlog = getAllBlogs("content/posts");
   const paths = getAllBlog.map((d) => ({
     params: {
       author: kebabCase(d.frontmatter.author),
@@ -40,13 +40,13 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = ({ params }) => {
   const { author } = params;
-  const authorData = getAllBlogs("Archive/author");
+  const authorData = getAllBlogs("content/author");
 
   const filterAuthor = authorData.filter(
     (a) => kebabCase(a.frontmatter.title) == author
   );
 
-  const getAllBlog = getAllBlogs("Archive/posts");
+  const getAllBlog = getAllBlogs("content/posts");
   const filterAuthorBlog = getAllBlog.filter(
     (data) => kebabCase(data.frontmatter.author) == author
   );

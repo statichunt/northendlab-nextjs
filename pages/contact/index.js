@@ -12,7 +12,7 @@ const Contact = ({ contactData }) => {
 };
 
 export const getStaticProps = () => {
-  const contactData = getSingleData("Archive");
+  const contactData = getSingleData("content");
   console.log(contactData);
   return {
     props: {
