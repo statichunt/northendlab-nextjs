@@ -5,13 +5,11 @@ import menubar from "../../config/menu.json";
 import { useState } from "react";
 import Search from "components/Search/Search";
 import MobileMenu from "components/MobileMenu/MobileMenu";
-import { useRouter } from "next/router";
 
 const Header = ({ navbar, isOpen, toggle, isFixed }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
   const [showSearchPosts, setShowSearchPosts] = useState();
   const [searchItem, setSearchItem] = useState(false);
-  const router = useRouter();
 
   const handleSearch = () => {
     setShowSearchPosts("");
@@ -21,7 +19,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
       setShowSearchBar(!showSearchbar);
     }
   };
-
+  console.log(searchItem);
   const { header, logo } = menubar;
   return (
     <>
@@ -50,7 +48,10 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
               </a>
             </div>
 
-            <Search showSearchPosts={showSearchPosts}></Search>
+            <Search
+              showSearchPosts={showSearchPosts}
+              handleSearch={handleSearch}
+            ></Search>
           </div>
         ) : (
           <nav className={"flex justify-between items-center  w-2/3 mx-auto "}>
@@ -77,25 +78,28 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
               </a>
             </div>
             <ul className=" hidden lg:block">
-              {header.map((menu) => (
-                <Link href={menu.link} key={menu.menu}>
-                  <a className="mr-4 px-8 py-4 text-textColor">
-                    <li className="inline-block">
-                      {menu.menu ? (
-                        menu.menu
-                      ) : (
-                        <i
-                          key={menu.class}
-                          className={`${menu.class} `}
-                          onClick={() => {
-                            setShowSearchBar(true);
-                          }}
-                        ></i>
-                      )}
-                    </li>
-                  </a>
-                </Link>
-              ))}
+              {header.map((menu) =>
+                menu.class ? (
+                  <li className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer">
+                    <i
+                      key={menu.class}
+                      className={`${menu.class} `}
+                      onClick={() => {
+                        setShowSearchBar(true);
+                      }}
+                    ></i>
+                  </li>
+                ) : (
+                  <Link
+                    href={menu.link == "" ? "#" : menu.link}
+                    key={menu.menu}
+                  >
+                    <a className="mr-4 px-8 py-4 text-textColor">
+                      <li className="inline-block">{menu.menu}</li>
+                    </a>
+                  </Link>
+                )
+              )}
             </ul>
           </nav>
         )}

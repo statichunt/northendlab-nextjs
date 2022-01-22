@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/dist/client/link";
 import React from "react";
 
 const Pagination = ({ numOfPage, page }) => {
@@ -18,7 +18,7 @@ const Pagination = ({ numOfPage, page }) => {
           </Link>
         )}
         {pageList.map((p) => (
-          <Link key={p} passHref href={`/page/${p}`}>
+          <Link key={p} href={`/page/${p}`}>
             <a
               className={`px-4 py-2 hover:bg-primaryColor hover:text-white ${
                 page == p && "bg-primaryColor text-white"

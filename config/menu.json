@@ -41,7 +41,7 @@
     },
     {
       "class": "fas fa-search",
-      "link": "",
+      "link": "#",
       "submenu": [
         {
           "page": "",

@@ -1,6 +1,6 @@
 import React from "react";
 import menubar from "../../config/menu.json";
-import Link from "next/link";
+import Link from "next/dist/client/link";
 import Search from "components/Search/Search";
 
 const MobileMenu = ({ isOpen, toggle, showSearchbar, setShowSearchBar }) => {
@@ -21,7 +21,7 @@ const MobileMenu = ({ isOpen, toggle, showSearchbar, setShowSearchBar }) => {
       >
         <ul className=" w-full">
           {header.map((menu) => (
-            <Link href={menu.link} key={menu.menu} passHref>
+            <Link href={menu.link} key={menu.menu}>
               <li className="mr-4 mt-8 px-8 py-4 text-textColor text-center block">
                 {menu.class ? (
                   <i

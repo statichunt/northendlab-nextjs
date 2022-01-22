@@ -2,7 +2,7 @@ import { dateFormate } from "@/lib/utils/dateFormate";
 import { kebabCase } from "@/lib/utils/slugger";
 import Pagination from "components/Pagination/Pagination";
 import { marked } from "marked";
-import Link from "next/link";
+import Link from "next/dist/client/link";
 import React from "react";
 
 const Blog = ({ posts, page, pagination }) => {
@@ -19,7 +19,12 @@ const Blog = ({ posts, page, pagination }) => {
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
           >
-            <Link href={`/posts/${d.slug}`} passHref>
+            <Link
+              href={{
+                pathname: `/posts/${d.slug}`,
+                query: d.slug,
+              }}
+            >
               <a>
                 <h3 className="text-primaryColor text-h3 ">
                   {d.frontmatter.title}
@@ -27,12 +32,23 @@ const Blog = ({ posts, page, pagination }) => {
               </a>
             </Link>
             <p className="text-textLight mb-4">
-              <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
+              <Link
+                href={{
+                  pathname: `/author/${kebabCase(d.frontmatter.author)}`,
+                  query: kebabCase(d.frontmatter.author),
+                }}
+              >
                 <a>{d.frontmatter.author}</a>
               </Link>
               , {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
-                <Link href={`categories/${kebabCase(c)}`} key={c}>
+                <Link
+                  href={{
+                    pathname: `category/${kebabCase(c)}`,
+                    query: kebabCase(c),
+                  }}
+                  key={c}
+                >
                   <a className="mr-2">{`${c}`}</a>
                 </Link>
               ))}
@@ -44,7 +60,12 @@ const Blog = ({ posts, page, pagination }) => {
                 __html: marked.parse(d.content.slice(0, 141)),
               }}
             ></div>
-            <Link href={`/posts/${d.slug}`} passHref>
+            <Link
+              href={{
+                pathname: `/posts/${d.slug}`,
+                query: d.slug,
+              }}
+            >
               <a className="text-primaryColor border-b border-primaryColor">
                 Read more
               </a>

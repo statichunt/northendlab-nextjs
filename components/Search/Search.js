@@ -1,14 +1,14 @@
+import { dateFormate } from "@/lib/utils/dateFormate";
 import { kebabCase } from "@/lib/utils/slugger";
 import { AppContext } from "components/context/AppContext";
 import { marked } from "marked";
 import Link from "next/link";
 import React, { useContext } from "react";
 
-const Search = ({ showSearchPosts }) => {
+const Search = ({ showSearchPosts, handleSearch }) => {
   const [post] = useContext(AppContext);
-  console.log(showSearchPosts.toLowerCase());
+
   let searchPost = post.filter((p) => {
-    console.log(p.frontmatter.title.toLowerCase());
     if (showSearchPosts === "") {
       return "";
     } else if (p.frontmatter.title.toLowerCase().includes(showSearchPosts)) {
@@ -27,18 +27,20 @@ const Search = ({ showSearchPosts }) => {
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
           >
-            <Link href={`posts/${d.slug}`} passHref>
-              <h3 className="text-primaryColor text-h3 ">
-                {d.frontmatter.title}
-              </h3>
+            <Link href={`/posts/${d.slug}`}>
+              <a onClick={handleSearch}>
+                <h3 className="text-primaryColor text-h3 ">
+                  {d.frontmatter.title}
+                </h3>
+              </a>
             </Link>
             <p className="text-textLight mb-4">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
                 {d.frontmatter.author}
               </Link>{" "}
-              {d.frontmatter.date}{" "}
+              {dateFormate(d.frontmatter.date)}{" "}
               {d.frontmatter.categories.map((c) => (
-                <Link href={`categories/${kebabCase(c)}`} key={c}>
+                <Link href={`/category/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>
                 </Link>
               ))}
@@ -50,7 +52,7 @@ const Search = ({ showSearchPosts }) => {
                 __html: marked.parse(d.content.slice(0, 141)),
               }}
             ></div>
-            <Link href={`posts/${d.slug}`}>
+            <Link href={`/posts/${d.slug}`}>
               <a className="text-primaryColor border-b border-primaryColor">
                 Read more
               </a>

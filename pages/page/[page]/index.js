@@ -1,4 +1,4 @@
-import { getAllBlogs, getSingleData } from "@/lib/posts";
+import { getAllBlogs, getDefaultPage } from "@/lib/posts";
 import Blog from "components/Blog";
 import Layout from "components/Layout/Layout";
 import React, { useContext, useEffect, useState } from "react";
@@ -50,7 +50,7 @@ export const getStaticProps = ({ params }) => {
   const page = parseInt((params && params.page) || 1);
   const { pagination } = config.perameter;
   const getPost = getAllBlogs("content/posts");
-  const getBannerData = getSingleData("content");
+  const getBannerData = getDefaultPage("content");
 
   return {
     props: {

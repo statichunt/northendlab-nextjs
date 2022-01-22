@@ -2,18 +2,17 @@ import React from "react";
 import Image from "next/image";
 import { marked } from "marked";
 
-const ContactPage = ({ contactData }) => {
-  console.log(contactData);
+const ContactPage = ({ frontmatter, content }) => {
   return (
     <div className="container mx-auto">
       <div className="w-full lg:w-2/3 grid lg:grid-cols-2 mx-auto gap-12 lg:px-0 px-8 my-8">
         <div className="w-full ">
           <h2 className="text-h2 font-primary text-dark font-bold mt-7">
-            {contactData.frontmatter.title}
+            {frontmatter.title}
           </h2>
           <div
             dangerouslySetInnerHTML={{
-              __html: marked.parse(contactData.content),
+              __html: marked.parse(content),
             }}
             className="markdown"
           ></div>
@@ -55,7 +54,7 @@ const ContactPage = ({ contactData }) => {
         <div className="flex justify-center items-center">
           <div className="w-10/12 h-h600 relative">
             <Image
-              src={contactData.frontmatter.image}
+              src={frontmatter.image}
               alt="abc"
               layout="fill"
               objectFit="cover"
