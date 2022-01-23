@@ -19,28 +19,30 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
       setShowSearchBar(!showSearchbar);
     }
   };
-  console.log(searchItem);
+
   const { header, logo } = menubar;
   return (
     <>
       <header
         className={
           navbar
-            ? `header top-0  ${
+            ? `${showSearchbar ? "header py-0" : "header"} top-0  ${
                 isFixed ? "fixed" : "sticky"
               }  z-40 bg-white shadow-lg`
-            : `header ${isFixed ? "fixed" : "sticky"}  z-40 top-0 `
+            : `${showSearchbar ? "header py-0" : "header"} ${
+                isFixed ? "fixed" : "sticky"
+              }  z-40 top-0 `
         }
       >
         {showSearchbar ? (
-          <div className="lg:w-2/3 w-full mx-auto ">
-            <div className="flex items-center">
+          <div className=" w-full mx-auto  ">
+            <div className="flex items-center w-full bg-white px-6">
               <input
                 type="text"
                 onChange={(e) => {
                   setShowSearchPosts(e.target.value);
                 }}
-                className="w-full py-4 outline-none text-2xl"
+                className="w-2/3 mx-auto py-12  outline-none text-2xl"
                 placeholder="Tyepe Here"
               />{" "}
               <a className="text-h4 cursor-pointer" onClick={handleSearch}>
@@ -54,7 +56,11 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
             ></Search>
           </div>
         ) : (
-          <nav className={"flex justify-between items-center  w-2/3 mx-auto "}>
+          <nav
+            className={
+              "flex justify-between items-center w-full px-8  xl:w-2/3 mx-auto "
+            }
+          >
             <Link href="/">
               <a>
                 <div className="w-52 h-8 relative">
@@ -80,9 +86,11 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
             <ul className=" hidden lg:block">
               {header.map((menu) =>
                 menu.class ? (
-                  <li className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer">
+                  <li
+                    key={menu.class}
+                    className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer"
+                  >
                     <i
-                      key={menu.class}
                       className={`${menu.class} `}
                       onClick={() => {
                         setShowSearchBar(true);

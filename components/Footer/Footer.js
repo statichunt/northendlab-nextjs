@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="flex lg:justify-between py-8 flex-col lg:flex-row justify-center items-center'">
           <div className="mx-auto lg:mx-px flex lg:justify-start justify-center items-center my-6 lg:w-1/3 w-full">
             <div className="w-52 h-8 relative">
-              <Link href="/">
+              <Link href="/" passHref>
                 <Image
                   src={logo}
                   alt="logo"

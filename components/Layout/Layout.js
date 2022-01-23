@@ -25,7 +25,7 @@ const Layout = ({ children, isFixed, title }) => {
     window.addEventListener("scroll", changeBackground);
 
     const handleMobileMenu = () => {
-      if (window.innerWidth > 1024 && isOpen) {
+      if (window.innerWidth >= 1024 && isOpen) {
         setIsOpen(false);
       }
     };
