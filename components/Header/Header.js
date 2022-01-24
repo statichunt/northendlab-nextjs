@@ -42,7 +42,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
                 onChange={(e) => {
                   setShowSearchPosts(e.target.value);
                 }}
-                className="w-2/3 mx-auto py-12  outline-none text-2xl"
+                className="w-2/3 mx-auto py-8  outline-none text-2xl shadow-sm shadow-light px-6"
                 placeholder="Tyepe Here"
               />{" "}
               <a className="text-h4 cursor-pointer" onClick={handleSearch}>
@@ -98,14 +98,34 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
                     ></i>
                   </li>
                 ) : (
-                  <Link
-                    href={menu.link == "" ? "#" : menu.link}
-                    key={menu.menu}
-                  >
-                    <a className="mr-4 px-8 py-4 text-textColor">
-                      <li className="inline-block">{menu.menu}</li>
-                    </a>
-                  </Link>
+                  <li className="inline-block group relative" key={menu.menu}>
+                    <Link href={menu.link == "" ? "#" : menu.link}>
+                      <a className="mr-4 px-8 py-4 text-textColor">
+                        {menu.menu}
+                      </a>
+                    </Link>
+                    <ul
+                      className={
+                        menu.submenu[0].page != ""
+                          ? "  hidden group-hover:block subMenu"
+                          : "hidden"
+                      }
+                    >
+                      {menu.submenu[0].page != "" &&
+                        menu.submenu.map((p) => (
+                          <Link href={`/${p.pagelink}`} key={p.page}>
+                            <a className="hover:text-primaryColor text-textColor hover:font-extralight z-10  ">
+                              <li
+                                className="rounded-sm 
+                     hover:bg-light px-2 py-1 capitalize"
+                              >
+                                {p.page}
+                              </li>
+                            </a>
+                          </Link>
+                        ))}
+                    </ul>
+                  </li>
                 )
               )}
             </ul>

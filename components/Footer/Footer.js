@@ -3,6 +3,7 @@ import Link from "next/dist/client/link";
 import React from "react";
 import config from "../../config/config.json";
 import menu from "../../config/menu.json";
+import { marked } from "marked";
 
 const Footer = () => {
   const { socialMedia, footer } = config;
@@ -11,7 +12,7 @@ const Footer = () => {
   return (
     <div className="container mx-auto text-center border-t border-borderColor mt-8">
       <footer className="w-2/3 mx-auto">
-        <div className="flex lg:justify-between py-8 flex-col lg:flex-row justify-center items-center'">
+        <div className="flex lg:justify-between mt-4 flex-col lg:flex-row justify-center items-center'">
           <div className="mx-auto lg:mx-px flex lg:justify-start justify-center items-center my-6 lg:w-1/3 w-full">
             <div className="w-52 h-8 relative">
               <Link href="/" passHref>
@@ -43,8 +44,27 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="text-center">
-          <p>{footer.copyright}</p>
+        <div className="text-center py-4">
+          <p>
+            <p
+              className="markdown inline-block "
+              dangerouslySetInnerHTML={{ __html: marked(footer.copyright) }}
+            ></p>
+            {footer.theme_copyright && (
+              <>
+                &nbsp;| Theme by&nbsp;
+                <Link href="https://statichunt.com/">
+                  <a
+                    className="text-primaryColor hover:opacity-80"
+                    target="_blank"
+                    rel="noflow"
+                  >
+                    Statichunt
+                  </a>
+                </Link>
+              </>
+            )}
+          </p>
         </div>
       </footer>
     </div>

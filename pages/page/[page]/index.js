@@ -13,6 +13,7 @@ const Pages = ({ posts, page, bannerData, pagination }) => {
   useEffect(() => {
     setPost(posts);
   });
+
   const sortByDates = sortByDate(posts);
 
   return (

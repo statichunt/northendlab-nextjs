@@ -9,9 +9,6 @@ const Search = ({ showSearchPosts, handleSearch }) => {
   const [post] = useContext(AppContext);
 
   let searchPost = post.filter((p) => {
-    console.log(
-      p.category.filter((c) => c.toLowerCase().includes(showSearchPosts))
-    );
     if (showSearchPosts === "") {
       return "";
     } else if (p.frontmatter.title.toLowerCase().includes(showSearchPosts)) {
@@ -19,10 +16,6 @@ const Search = ({ showSearchPosts, handleSearch }) => {
     } else if (p.content.toLowerCase().includes(showSearchPosts)) {
       return p;
     } else if (p.category.includes(showSearchPosts)) {
-      // // const post = p.filter((c) =>
-      // //   c.frontmatter.categories.map((c) => c === showSearchPosts)
-      // // );
-      console.log(true);
       return p;
     }
   });

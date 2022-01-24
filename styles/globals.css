@@ -9,6 +9,9 @@
   .inputField {
     @apply px-8 py-4 my-4 border border-borderColor outline-none text-textColor;
   }
+  .subMenu {
+    @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-dark/80 shadow-md font-primary z-10 -left-5;
+  }
   .markdown {
     @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-primary
     prose-li:font-primary
@@ -16,7 +19,7 @@
     prose-h2:text-h2
     prose-h3:text-h3
     prose-h4:text-h4
-   
+    prose-a:text-primaryColor
     prose-a:no-underline;
   }
 }

@@ -19,12 +19,7 @@ const Blog = ({ posts, page, pagination }) => {
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
           >
-            <Link
-              href={{
-                pathname: `/posts/${d.slug}`,
-                query: d.slug,
-              }}
-            >
+            <Link href={`/posts/${d.slug}`}>
               <a>
                 <h3 className="text-primaryColor text-h3 ">
                   {d.frontmatter.title}
@@ -32,17 +27,12 @@ const Blog = ({ posts, page, pagination }) => {
               </a>
             </Link>
             <p className="text-textLight mb-4">
-              <Link
-                href={{
-                  pathname: `/author/${kebabCase(d.frontmatter.author)}`,
-                  query: kebabCase(d.frontmatter.author),
-                }}
-              >
+              <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
                 <a>{d.frontmatter.author}</a>
               </Link>
               , {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
-                <Link href={`category/${kebabCase(c)}`} key={c}>
+                <Link href={`/category/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>
                 </Link>
               ))}
