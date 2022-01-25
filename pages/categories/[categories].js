@@ -9,27 +9,28 @@ import Layout from "components/Layout/Layout";
 import Category from "components/Category/Category";
 
 const Categories = ({ post, category }) => {
-  const p = post.filter((p) => p.length > 0);
-  const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
+  // const p = post.filter((p) => p.length > 0);
+  // const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
 
   return (
-    <Layout title={c[0]}>
-      <div className="relative">
+    <Layout>
+      {/* <div className="relative">
         <Category posts={p[0]} category={c[0]}></Category>
-      </div>
+      </div> */}
     </Layout>
   );
 };
 
 export async function getStaticPaths() {
   const category = getAllCategory();
+  console.log(Object.keys(category));
 
   const paths = Object.keys(category).map((d) => ({
     params: {
       categories: d,
     },
   }));
-
+  console.log(paths);
   return { paths, fallback: false };
 }
 
@@ -47,8 +48,9 @@ export async function getStaticProps({ params }) {
     );
 
     const get = getAllBlogs("content/posts");
-    const data = get.filter(function (e) {
-      return e.category.some(function (a) {
+    console.log(get);
+    const data = get.filter((e) => {
+      return e.category.some((a) => {
         return filter.indexOf(a) != -1;
       });
     });

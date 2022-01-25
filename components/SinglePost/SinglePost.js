@@ -21,13 +21,7 @@ const SinglePost = ({ posts }) => {
           </Link>
           , <span>{dateFormate(posts[0].frontmatter.date)}</span>,
           {posts[0].category.map((c) => (
-            <Link
-              key={c}
-              href={{
-                pathname: "/category/[categories]",
-                query: { categories: kebabCase(c) },
-              }}
-            >
+            <Link key={c} href={`/categories/${kebabCase(c)}`}>
               <a className="mr-4">{c}</a>
             </Link>
           ))}
