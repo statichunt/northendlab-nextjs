@@ -9,6 +9,8 @@ import Layout from "components/Layout/Layout";
 import Category from "components/Category/Category";
 
 const Categories = ({ post, category }) => {
+  const posts = post.filter((p) => p.length > 0);
+
   // const [cate, setCate] = useState();
 
   // useEffect(() => {
@@ -20,23 +22,22 @@ const Categories = ({ post, category }) => {
 
   return (
     <Layout>
-      {/* <div className="relative">
-        <Category posts={post} category={cate}></Category>
-      </div> */}
+      <div className="relative">
+        <Category posts={posts} category={category}></Category>
+      </div>
     </Layout>
   );
 };
 
 export async function getStaticPaths() {
   const category = getAllCategory();
-  console.log(Object.keys(category));
 
   const paths = Object.keys(category).map((d) => ({
     params: {
       categories: d,
     },
   }));
-  console.log(paths);
+
   return { paths, fallback: false };
 }
 
@@ -54,7 +55,7 @@ export async function getStaticProps({ params }) {
     );
 
     const get = getAllBlogs("content/posts");
-    console.log(get);
+
     const data = get.filter((e) => {
       return e.category.some((a) => {
         return filter.indexOf(a) != -1;
@@ -63,9 +64,13 @@ export async function getStaticProps({ params }) {
 
     return data;
   });
-  const p = posts.filter((p) => p.length > 0);
-  console.log(p[0]);
-  return { props: { post: p[0], category: params.categories } };
+  const post = posts.filter((p) => p.length > 0);
+
+  const category = post[0].map((p) =>
+    p.frontmatter.categories.filter((c) => kebabCase(c) == params.categories)
+  );
+
+  return { props: { post: posts, category: category[0] } };
 }
 
 export default Categories;

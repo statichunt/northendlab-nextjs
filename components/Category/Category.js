@@ -11,17 +11,12 @@ const Category = ({ posts, category }) => {
         Posts related to <span className="text-primaryColor">{category}</span>
       </h2>
       <div className="w-full  shadow-lg p-8">
-        {posts.map((d) => (
+        {posts[0].map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
           >
-            <Link
-              href={{
-                pathname: "/posts/[posts]",
-                query: { posts: d.slug },
-              }}
-            >
+            <Link href={`/posts/${d.slug}`}>
               <a>
                 <h3 className="text-primaryColor text-h3 ">
                   {d.frontmatter.title}
@@ -29,14 +24,7 @@ const Category = ({ posts, category }) => {
               </a>
             </Link>
             <p className="text-textLight mb-4">
-              <Link
-                href={{
-                  pathname: "/author/[author]",
-                  query: {
-                    author: kebabCase(d.frontmatter.author),
-                  },
-                }}
-              >
+              <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
                 {d.frontmatter.author}
               </Link>{" "}
               {dateFormate(d.frontmatter.date)},{" "}
