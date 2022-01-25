@@ -1,6 +1,6 @@
 ---
 title: "Contact Us"
-draft: true
+draft: false
 description: "this is meta description"
 image: "/images/contact.svg"
 layout: contact

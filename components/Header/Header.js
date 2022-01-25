@@ -75,7 +75,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
             </Link>
 
             <div className=" lg:hidden">
-              <a onClick={toggle} className="text-4xl">
+              <a onClick={toggle} className="text-4xl cursor-pointer">
                 {isOpen ? (
                   <i className="fas fa-times"></i>
                 ) : (

@@ -1,8 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import { marked } from "marked";
+import config from "../../config/config.json";
 
-const ContactPage = ({ frontmatter, content }) => {
+const ContactPage = ({ post }) => {
+  console.log(post);
+  const { frontmatter, content } = post;
+  const { perameter } = config;
+  const action = perameter.contactFormAction;
+
   return (
     <div className="container mx-auto">
       <div className="w-full lg:w-2/3 grid lg:grid-cols-2 mx-auto gap-12 lg:px-0 px-8 my-8">
@@ -17,7 +23,7 @@ const ContactPage = ({ frontmatter, content }) => {
             className="markdown"
           ></div>
           <div>
-            <form>
+            <form action={action} method="post" className="mx-auto ">
               <div className="grid lg:grid-cols-2 gap-4">
                 <input type="text" placeholder="Name" className="inputField" />
                 <input
