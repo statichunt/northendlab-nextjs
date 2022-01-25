@@ -14,16 +14,17 @@ const Footer = () => {
       <footer className="w-2/3 mx-auto">
         <div className="flex lg:justify-between mt-4 flex-col lg:flex-row justify-center items-center'">
           <div className="mx-auto lg:mx-px flex lg:justify-start justify-center items-center my-6 lg:w-1/3 w-full">
-            <div className="w-52 h-8 relative">
-              <Link href="/" passHref>
+            {" "}
+            <Link href="/" passHref>
+              <div className="w-52 h-8 relative">
                 <Image
                   src={logo}
                   alt="logo"
                   layout="fill"
                   // objectFit="cover"
                 ></Image>
-              </Link>
-            </div>
+              </div>
+            </Link>{" "}
           </div>
           <div className="justify-center flex items-center lg:w-1/3 w-full ">
             <p>
@@ -46,10 +47,10 @@ const Footer = () => {
         </div>
         <div className="text-center py-4">
           <p>
-            <p
+            <div
               className="markdown inline-block "
               dangerouslySetInnerHTML={{ __html: marked(footer.copyright) }}
-            ></p>
+            ></div>
             {footer.theme_copyright && (
               <>
                 &nbsp;| Theme by&nbsp;

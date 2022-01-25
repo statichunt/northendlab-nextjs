@@ -10,10 +10,9 @@ import Category from "components/Category/Category";
 
 const Categories = ({ post, category }) => {
   const [cate, setCate] = useState();
-  const p = post.filter((p) => p.length > 0);
 
   useEffect(() => {
-    const c = p[0].map((p) =>
+    const c = post.map((p) =>
       p.category.filter((c) => kebabCase(c) === category)
     );
     setCate(c[0]);
@@ -22,7 +21,7 @@ const Categories = ({ post, category }) => {
   return (
     <Layout>
       <div className="relative">
-        <Category posts={p[0]} category={cate}></Category>
+        <Category posts={post} category={cate}></Category>
       </div>
     </Layout>
   );
@@ -64,8 +63,9 @@ export async function getStaticProps({ params }) {
 
     return data;
   });
-
-  return { props: { post: posts, category: params.categories } };
+  const p = posts.filter((p) => p.length > 0);
+  console.log(p[0]);
+  return { props: { post: p[0], category: params.categories } };
 }
 
 export default Categories;
