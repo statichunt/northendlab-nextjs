@@ -17,8 +17,8 @@ const Categories = ({ post, category }) => {
       p.category.filter((c) => kebabCase(c) === category)
     );
     setCate(c);
-  });
-  console.log(cate);
+  }, []);
+  console.log();
   return (
     <Layout>
       <div className="relative">
