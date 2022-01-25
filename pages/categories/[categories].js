@@ -16,13 +16,13 @@ const Categories = ({ post, category }) => {
     const c = p[0].map((p) =>
       p.category.filter((c) => kebabCase(c) === category)
     );
-    setCate(c);
+    setCate(c[0]);
   }, []);
   console.log();
   return (
     <Layout>
       <div className="relative">
-        <Category posts={p[0]} category={cate[0]}></Category>
+        <Category posts={p[0]} category={cate}></Category>
       </div>
     </Layout>
   );
