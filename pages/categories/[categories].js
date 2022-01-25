@@ -11,7 +11,8 @@ import Category from "components/Category/Category";
 const Categories = ({ post, category }) => {
   console.log(category);
   const p = post.filter((p) => p.length > 0);
-  const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
+  console.log(p);
+  // const c = p[0].map((p) => p.category.filter((c) => kebabCase(c) == category));
 
   return (
     <Layout>
