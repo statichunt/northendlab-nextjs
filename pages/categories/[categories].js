@@ -21,9 +21,9 @@ const Categories = ({ post, category }) => {
   console.log(cate);
   return (
     <Layout>
-      {/* <div className="relative">
-        <Category posts={p[0]} category={c[0]}></Category>
-      </div> */}
+      <div className="relative">
+        <Category posts={p[0]} category={cate[0]}></Category>
+      </div>
     </Layout>
   );
 };
