@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
 import { marked } from "marked";
 import { kebabCase } from "@/lib/utils/slugger";
 import { dateFormate } from "@/lib/utils/dateFormate";
 
 const Category = ({ posts, category }) => {
+  const [post, setPost] = useState([]);
+  useEffect(() => {
+    setPost(posts[0]);
+  }, []);
+
   return (
     <div className="w-full lg:w-1/2 mx-auto">
       <h2 className="text-h2 font-primary text-dark font-bold p-8">
         Posts related to <span className="text-primaryColor">{category}</span>
       </h2>
       <div className="w-full  shadow-lg p-8">
-        {posts[0].map((d) => (
+        {post.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
             key={d.slug}
