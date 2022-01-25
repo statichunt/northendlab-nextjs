@@ -9,20 +9,20 @@ import Layout from "components/Layout/Layout";
 import Category from "components/Category/Category";
 
 const Categories = ({ post, category }) => {
-  const [cate, setCate] = useState();
+  // const [cate, setCate] = useState();
 
-  useEffect(() => {
-    const c = post.map((p) =>
-      p.category.filter((c) => kebabCase(c) === category)
-    );
-    setCate(c[0]);
-  }, []);
-  console.log();
+  // useEffect(() => {
+  //   const c = post.map((p) =>
+  //     p.category.filter((c) => kebabCase(c) === category)
+  //   );
+  //   setCate(c[0]);
+  // }, []);
+
   return (
     <Layout>
-      <div className="relative">
+      {/* <div className="relative">
         <Category posts={post} category={cate}></Category>
-      </div>
+      </div> */}
     </Layout>
   );
 };
