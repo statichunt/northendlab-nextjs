@@ -3,7 +3,6 @@ import { kebabCase } from "@/lib/utils/slugger";
 import Author from "components/Author/Author";
 import AuthorPost from "components/Author/AuthorPost";
 import Layout from "components/Layout/Layout";
-import React from "react";
 
 const AuthorData = ({ post, authorPost }) => {
   const author = [...new Set(post[0].frontmatter.title)];
@@ -40,7 +39,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = ({ params }) => {
   const { author } = params;
-  const authorData = getAllBlogs("content/author");
+  const authorData = getAllBlogs("content/author", true);
 
   const filterAuthor = authorData.filter(
     (a) => kebabCase(a.frontmatter.title) == author
@@ -50,7 +49,7 @@ export const getStaticProps = ({ params }) => {
   const filterAuthorBlog = getAllBlog.filter(
     (data) => kebabCase(data.frontmatter.author) == author
   );
-
+  console.log(authorData);
   return {
     props: {
       post: filterAuthor,

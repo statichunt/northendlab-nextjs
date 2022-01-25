@@ -29,7 +29,7 @@ const Pages = ({ posts, page, bannerData, pagination }) => {
 export default Pages;
 
 export const getStaticPaths = () => {
-  const getPost = getAllBlogs("content/posts");
+  const getPost = getAllBlogs("content/posts", false);
   const { pagination } = config.perameter;
   let paths = [];
   const numOfPage = Math.ceil(getPost.length / pagination);
