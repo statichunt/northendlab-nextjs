@@ -1,7 +1,7 @@
 import { getAllCategory } from "@/lib/category";
 import { getAllBlogs } from "@/lib/posts";
 import { kebabCase } from "@/lib/utils/slugger";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -9,13 +9,16 @@ import Layout from "components/Layout/Layout";
 import Category from "components/Category/Category";
 
 const Categories = ({ post, category }) => {
-  console.log(category);
+  const [cate, setCate] = useState();
   const p = post.filter((p) => p.length > 0);
-  console.log(p);
-  const c = p[0].map((p) =>
-    p.category.filter((c) => kebabCase(c) === category)
-  );
 
+  useEffect(() => {
+    const c = p[0].map((p) =>
+      p.category.filter((c) => kebabCase(c) === category)
+    );
+    setCate(c);
+  });
+  console.log(cate);
   return (
     <Layout>
       {/* <div className="relative">
