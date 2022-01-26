@@ -9,7 +9,7 @@ const AuthorPost = ({ posts }) => {
     <div className="w-full  shadow-lg">
       {posts.map((d) => (
         <div
-          className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
+          className=" border-b border-borderColor py-8 md:w-11/12 mx-auto "
           key={d.slug}
         >
           <Link
@@ -19,12 +19,10 @@ const AuthorPost = ({ posts }) => {
             }}
           >
             <a>
-              <h3 className="text-primaryColor text-h3 ">
-                {d.frontmatter.title}
-              </h3>
+              <h3 className="title ">{d.frontmatter.title}</h3>
             </a>
           </Link>
-          <p className="text-textLight mb-4">
+          <p className="subTitle">
             <Link
               href={{
                 pathname: "/author/[author]",
@@ -44,7 +42,7 @@ const AuthorPost = ({ posts }) => {
           </p>
 
           <div
-            className="text-large mb-4 font-normal text-textColor"
+            className="markdown"
             dangerouslySetInnerHTML={{
               __html: marked.parse(d.content.slice(0, 141)),
             }}
@@ -55,9 +53,7 @@ const AuthorPost = ({ posts }) => {
               query: { posts: d.slug },
             }}
           >
-            <a className="text-primaryColor border-b border-primaryColor">
-              Read more
-            </a>
+            <a className="postButton">Read more</a>
           </Link>
         </div>
       ))}

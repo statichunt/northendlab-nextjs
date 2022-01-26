@@ -21,8 +21,10 @@ const Pagination = ({ numOfPage, page }) => {
           <Link key={p} href={`/page/${p}`}>
             <a
               className={`px-4 py-2 hover:bg-primaryColor hover:text-white ${
-                page == p && "bg-primaryColor text-white"
-              }  mr-4 text-textColor rounded-md`}
+                page == p
+                  ? "paginationActive mr-4 rounded-md"
+                  : "bg-white text-textColor mr-4 rounded-md "
+              } `}
             >
               {p}
             </a>

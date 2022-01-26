@@ -21,12 +21,10 @@ const Blog = ({ posts, page, pagination }) => {
           >
             <Link href={`/posts/${d.slug}`}>
               <a>
-                <h3 className="text-primaryColor text-h3 ">
-                  {d.frontmatter.title}
-                </h3>
+                <h3 className="title">{d.frontmatter.title}</h3>
               </a>
             </Link>
-            <p className="text-textLight mb-4">
+            <p className="subTitle">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
                 <a>{d.frontmatter.author}</a>
               </Link>
@@ -39,7 +37,7 @@ const Blog = ({ posts, page, pagination }) => {
             </p>
 
             <div
-              className="text-large mb-4 font-normal text-textColor"
+              className="markdown"
               dangerouslySetInnerHTML={{
                 __html: marked.parse(d.content.slice(0, 141)),
               }}
@@ -50,9 +48,7 @@ const Blog = ({ posts, page, pagination }) => {
                 query: d.slug,
               }}
             >
-              <a className="text-primaryColor border-b border-primaryColor">
-                Read more
-              </a>
+              <a className="postButton">Read more</a>
             </Link>
           </div>
         ))}

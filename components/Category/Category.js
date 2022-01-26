@@ -23,16 +23,14 @@ const Category = ({ posts, category }) => {
           >
             <Link href={`/posts/${d.slug}`}>
               <a>
-                <h3 className="text-primaryColor text-h3 ">
-                  {d.frontmatter.title}
-                </h3>
+                <h3 className="title">{d.frontmatter.title}</h3>
               </a>
             </Link>
-            <p className="text-textLight mb-4">
+            <p className="subTitle">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
-                {d.frontmatter.author}
-              </Link>{" "}
-              {dateFormate(d.frontmatter.date)},{" "}
+                <a>{d.frontmatter.author}</a>
+              </Link>
+              , {dateFormate(d.frontmatter.date)},{" "}
               {d.frontmatter.categories.map((c) => (
                 <Link href={`/categories/${kebabCase(c)}`} key={c}>
                   <a className="mr-2">{`${c}`}</a>
@@ -41,20 +39,18 @@ const Category = ({ posts, category }) => {
             </p>
 
             <div
-              className="text-large mb-4 font-normal text-textColor"
+              className="markdown"
               dangerouslySetInnerHTML={{
                 __html: marked.parse(d.content.slice(0, 141)),
               }}
             ></div>
             <Link
               href={{
-                pathname: "/posts/[posts]",
-                query: { posts: d.slug },
+                pathname: `/posts/${d.slug}`,
+                query: d.slug,
               }}
             >
-              <a className="text-primaryColor border-b border-primaryColor">
-                Read more
-              </a>
+              <a className="postButton">Read more</a>
             </Link>
           </div>
         ))}

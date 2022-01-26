@@ -22,7 +22,7 @@ const Author = ({ post }) => {
         </h2>
         <div
           dangerouslySetInnerHTML={{ __html: marked.parse(post[0].content) }}
-          className="markdown text-center"
+          className="markdown text-center font-secondary"
         ></div>
       </div>
     </div>

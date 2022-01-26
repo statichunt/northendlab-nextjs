@@ -11,17 +11,8 @@ import Category from "components/Category/Category";
 const Categories = ({ post, category }) => {
   const posts = post.filter((p) => p.length > 0);
 
-  // const [cate, setCate] = useState();
-
-  // useEffect(() => {
-  //   const c = post.map((p) =>
-  //     p.category.filter((c) => kebabCase(c) === category)
-  //   );
-  //   setCate(c[0]);
-  // }, []);
-
   return (
-    <Layout>
+    <Layout title={category}>
       <div className="relative">
         <Category posts={posts} category={category}></Category>
       </div>

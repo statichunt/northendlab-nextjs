@@ -44,6 +44,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
                 }}
                 className="w-2/3 mx-auto py-8  outline-none text-2xl shadow-sm shadow-light px-6"
                 placeholder="Tyepe Here"
+                autoFocus
               />{" "}
               <a className="text-h4 cursor-pointer" onClick={handleSearch}>
                 <i className="fas fa-times"></i>

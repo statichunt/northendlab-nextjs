@@ -12,8 +12,21 @@
   .subMenu {
     @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-dark/80 shadow-md font-primary z-10 -left-5;
   }
+  .title {
+    @apply text-primaryColor text-h3 font-primary;
+  }
+  .subTitle {
+    @apply text-textLight mb-4 font-secondary font-semibold;
+  }
+  .postButton {
+    @apply text-primaryColor border py-2 px-4 rounded-lg font-medium border-primaryColor inline-block mt-4;
+  }
+
+  .paginationActive {
+    @apply bg-primaryColor text-white;
+  }
   .markdown {
-    @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-primary
+    @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-secondary prose-p:font-bold
     prose-li:font-primary
     prose-h1:text-h1
     prose-h2:text-h2

@@ -1,5 +1,6 @@
 const themeStyle = require("./config/style.json");
 const primaryFont = themeStyle.font.fontFamily.primary.replace(/\+/g, " ");
+const secondaryFont = themeStyle.font.fontFamily.secondary.replace(/\+/g, " ");
 const base = Number(themeStyle.font.fontSize.base.replace("px", ""));
 const font_scale = themeStyle.font.fontSize.font_scale;
 const h6 = base;
@@ -63,7 +64,11 @@ module.exports = {
       fontFamily: {
         primary: [
           primaryFont.replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, ""),
-          themeStyle.font.fontFamily.primaryType,
+          themeStyle.font.fontFamily.type,
+        ],
+        secondary: [
+          secondaryFont.replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, ""),
+          themeStyle.font.fontFamily.type,
         ],
       },
       height: {

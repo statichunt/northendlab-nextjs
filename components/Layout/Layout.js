@@ -49,7 +49,7 @@ const Layout = ({ children, isFixed, title }) => {
           crossOrigin="true"
         />
         <link
-          href={`https://fonts.googleapis.com/css2?family=${fontFamily.primary}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${fontFamily.secondary}&family=${fontFamily.primary}&display=swap`}
           rel="stylesheet"
         />
         <link
