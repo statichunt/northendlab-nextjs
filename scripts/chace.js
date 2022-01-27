@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
+const currentDate = new Date();
 
 function postData() {
   const files = fs.readdirSync(path.join("content/posts"));
@@ -14,14 +15,18 @@ function postData() {
     );
 
     const { data: frontmatter } = matter(markdownWithMeta);
+    const category = frontmatter.categories;
 
     return {
       slug,
       frontmatter,
+      category,
     };
   });
-  console.log(posts);
-  return `export const posts = ${JSON.stringify(posts)}`;
+  const filterByDate = posts.filter(
+    (f) => new Date(f.frontmatter.date) > currentDate
+  );
+  return `export const posts = ${JSON.stringify(filterByDate)}`;
 }
 
 try {
