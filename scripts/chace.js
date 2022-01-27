@@ -24,7 +24,7 @@ function postData() {
     };
   });
   const filterByDate = posts.filter(
-    (f) => new Date(f.frontmatter.date) > currentDate
+    (f) => new Date(f.frontmatter.date) < currentDate
   );
   return `export const posts = ${JSON.stringify(filterByDate)}`;
 }
