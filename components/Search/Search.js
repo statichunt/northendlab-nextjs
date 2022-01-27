@@ -1,14 +1,23 @@
 import { dateFormate } from "@/lib/utils/dateFormate";
 import { kebabCase } from "@/lib/utils/slugger";
-import { AppContext } from "components/context/AppContext";
+
 import { marked } from "marked";
 import Link from "next/link";
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 
-const Search = ({ showSearchPosts, handleSearch }) => {
-  const [post] = useContext(AppContext);
+const Search = ({ showSearchPosts }) => {
+  const [search, setSearch] = useState([]);
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await fetch("/api/search");
 
-  let searchPost = post.filter((p) => {
+      const post = await res.json();
+      setSearch(post);
+    };
+    getPosts();
+  }, []);
+
+  let searchPost = search.filter((p) => {
     if (showSearchPosts === "") {
       return "";
     } else if (p.frontmatter.title.toLowerCase().includes(showSearchPosts)) {
@@ -21,8 +30,8 @@ const Search = ({ showSearchPosts, handleSearch }) => {
   });
 
   return (
-    <div className={"w-full   bg-white"}>
-      <div className="h-auto">
+    <div className={"w-full lg:w-1/2 mx-auto z-40  "}>
+      <div className="h-auto w-full  shadow-lg bg-white ">
         {" "}
         {searchPost.map((d) => (
           <div

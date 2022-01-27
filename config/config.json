@@ -4,7 +4,8 @@
     "favicon": "/images/favicon.png",
     "pagination": 4,
     "sharePost": true,
-    "contactFormAction": "https://airform.io/faruk.themefisher@gmail.com"
+    "contactFormAction": "https://airform.io/faruk.themefisher@gmail.com",
+    "logo": "/images/logo/logo.png"
   },
 
   "footer": {

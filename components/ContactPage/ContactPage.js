@@ -4,7 +4,6 @@ import { marked } from "marked";
 import config from "../../config/config.json";
 
 const ContactPage = ({ post }) => {
-  console.log(post);
   const { frontmatter, content } = post;
   const { perameter } = config;
   const action = perameter.contactFormAction;

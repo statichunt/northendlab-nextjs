@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/dist/client/link";
 import React from "react";
 import config from "../../config/config.json";
-import menu from "../../config/menu.json";
+
 import { marked } from "marked";
 
 const Footer = () => {
   const { socialMedia, footer } = config;
-  const { logo } = menu;
+  const { logo } = config.perameter;
 
   return (
     <div className="container mx-auto text-center border-t border-borderColor mt-8">

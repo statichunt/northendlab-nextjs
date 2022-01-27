@@ -1,26 +1,22 @@
 import { getAllBlogs, getSingleIndexData, singleFile } from "@/lib/posts";
 import Blog from "components/Blog";
 import Layout from "components/Layout/Layout";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import config from "../../../config/config.json";
-import { AppContext } from "components/context/AppContext";
+
 import Banner from "components/Banner";
 import { sortByDate } from "@/lib/utils/dateFormate";
 import CallToAction from "components/CallToAction/CallToAction";
 
 const Pages = ({ posts, page, bannerData, pagination, callToaction }) => {
   const [isFixed] = useState(true);
-  const [post, setPost] = useContext(AppContext);
-  useEffect(() => {
-    setPost(posts);
-  });
 
   const sortByDates = sortByDate(posts);
 
   return (
     <Layout isFixed={isFixed} title="Northendlab | Blog Template">
       <div className="relative">
-        <Banner></Banner>
+        <Banner bannerData={bannerData}></Banner>
         <Blog posts={sortByDates} page={page} pagination={pagination}></Blog>
         <CallToAction callToaction={callToaction}></CallToAction>
       </div>

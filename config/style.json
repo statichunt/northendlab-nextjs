@@ -9,12 +9,12 @@
     "textColor": {
       "default": "#666",
       "dark": "#222",
-      "light": "#CBCBCB"
+      "light": "#7777"
     },
     "basicColor": {
       "black": "#000",
       "white": "#ffff",
-      "dark": "#333",
+      "dark": "#222222",
       "light": "#ddd"
     }
   },

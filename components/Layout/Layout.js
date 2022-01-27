@@ -7,7 +7,7 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import style from "../../config/style.json";
 
-const Layout = ({ children, isFixed, title }) => {
+const Layout = ({ children, isFixed, title, blog }) => {
   const [navbar, setNavbar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -60,6 +60,7 @@ const Layout = ({ children, isFixed, title }) => {
         />
       </Head>
       <Header
+        blog={blog}
         navbar={navbar}
         toggle={toggle}
         isOpen={isOpen}

@@ -1,4 +1,3 @@
-import { AppContext } from "components/context/AppContext";
 import { useState } from "react";
 import "../styles/globals.css";
 import CookieConsent from "react-cookie-consent";
@@ -10,7 +9,7 @@ function MyApp({ Component, pageProps }) {
   const { perameter } = config;
 
   return (
-    <AppContext.Provider value={[post, setPost]}>
+    <>
       <Head>
         <link rel="icon" href={perameter.favicon}></link>
       </Head>
@@ -18,7 +17,7 @@ function MyApp({ Component, pageProps }) {
         this is coocke
       </CookieConsent>
       <Component {...pageProps} />
-    </AppContext.Provider>
+    </>
   );
 }
 

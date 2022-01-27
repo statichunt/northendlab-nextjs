@@ -11,10 +11,11 @@ const h2 = h3 * font_scale;
 const h1 = h2 * font_scale;
 const h1_sm = h1 * 0.625;
 const h2_sm = h2 * 0.625;
-const h3_sm = h3 * 0.8;
+const h3_sm = h3 * 0.625;
 const large = base + base * 0.125;
 const small = base - base * 0.125;
 module.exports = {
+  important: true,
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -74,9 +75,10 @@ module.exports = {
       height: {
         37: "18.75rem",
         h600: "600px",
+        h800: "800px",
       },
       backgroundImage: {
-        bannerBg: "url('/images/banner/banner-bg.svg')",
+        bannerBg: "url('/images/banner/banner.png')",
       },
       colors: {
         primaryColor: themeStyle.color.themeColor.primary,

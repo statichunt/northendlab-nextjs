@@ -2,10 +2,12 @@
   "name": "northendlab",
   "private": true,
   "scripts": {
+    "cache-posts": "node scripts/chace.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "github-slugger": "^1.4.0",
@@ -21,6 +23,7 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.8",
+    "husky": "^7.0.4",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.13"
   }

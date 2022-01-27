@@ -12,26 +12,39 @@
   .subMenu {
     @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-dark/80 shadow-md font-primary z-10 -left-5;
   }
+  .greeting {
+    @apply font-primary text-h1_sm lg:text-h1 text-dark;
+  }
   .title {
-    @apply text-primaryColor text-h3 font-primary;
+    @apply sm:text-h3 text-h3_sm font-primary capitalize;
   }
   .subTitle {
-    @apply text-textLight mb-4 font-secondary font-semibold;
+    @apply text-textLight mb-4 font-secondary font-normal sm:font-semibold sm:text-base text-small;
   }
   .postButton {
-    @apply text-primaryColor border py-2 px-4 rounded-lg font-medium border-primaryColor inline-block mt-4;
+    @apply font-secondary text-primaryColor border py-2 px-4 rounded-lg font-bold border-primaryColor inline-block mt-4;
   }
 
   .paginationActive {
     @apply bg-primaryColor text-white;
   }
+
   .markdown {
-    @apply prose mx-auto sm:prose-2xl prose-p:text-base  sm:prose-li:text-base  prose-li:text-small prose-headings:font-primary prose-p:font-secondary prose-p:font-bold
+    @apply prose mx-auto
+     sm:prose-2xl
+     prose-p:text-base 
+     sm:prose-li:text-base
+      prose-li:text-small
+     prose-headings:font-primary
+     prose-p:font-secondary prose-p:font-bold
     prose-li:font-primary
     prose-h1:text-h1
     prose-h2:text-h2
     prose-h3:text-h3
     prose-h4:text-h4
+    prose-h1:my-5
+    prose-h2:mt-0
+    prose-h2:mb-0
     prose-a:text-primaryColor
     prose-a:no-underline;
   }

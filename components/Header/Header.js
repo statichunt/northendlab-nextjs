@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/dist/client/link";
-
+import Navlogo from "../../config/config.json";
 import menubar from "../../config/menu.json";
 import { useState } from "react";
 import Search from "components/Search/Search";
 import MobileMenu from "components/MobileMenu/MobileMenu";
 
-const Header = ({ navbar, isOpen, toggle, isFixed }) => {
+const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
   const [showSearchbar, setShowSearchBar] = useState(false);
   const [showSearchPosts, setShowSearchPosts] = useState();
   const [searchItem, setSearchItem] = useState(false);
@@ -20,7 +20,9 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
     }
   };
 
-  const { header, logo } = menubar;
+  const { header } = menubar;
+  const { logo } = Navlogo.perameter;
+
   return (
     <>
       <header
@@ -29,7 +31,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
             ? `${showSearchbar ? "header py-0" : "header"} top-0  ${
                 isFixed ? "fixed" : "sticky"
               }  z-40 bg-white shadow-lg`
-            : `${showSearchbar ? "header py-0" : "header"} ${
+            : `${showSearchbar ? "header py-0 " : "header"} ${
                 isFixed ? "fixed" : "sticky"
               }  z-40 top-0 `
         }
@@ -51,10 +53,13 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
               </a>
             </div>
 
-            <Search
-              showSearchPosts={showSearchPosts}
-              handleSearch={handleSearch}
-            ></Search>
+            <div className="bg-dark opacity-80">
+              <Search
+                showSearchPosts={showSearchPosts}
+                handleSearch={handleSearch}
+                blog={blog}
+              ></Search>
+            </div>
           </div>
         ) : (
           <nav
@@ -85,51 +90,46 @@ const Header = ({ navbar, isOpen, toggle, isFixed }) => {
               </a>
             </div>
             <ul className=" hidden lg:block">
-              {header.map((menu) =>
-                menu.class ? (
-                  <li
-                    key={menu.class}
-                    className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer"
+              {header.map((menu) => (
+                <li className="inline-block group relative" key={menu.menu}>
+                  <Link href={menu.link == "" ? "#" : menu.link}>
+                    <a className="mr-4 px-8 py-4 text-textColor">{menu.menu}</a>
+                  </Link>
+                  <ul
+                    className={
+                      menu.submenu[0].page != ""
+                        ? "  hidden group-hover:block subMenu"
+                        : "hidden"
+                    }
                   >
-                    <i
-                      className={`${menu.class} `}
-                      onClick={() => {
-                        setShowSearchBar(true);
-                      }}
-                    ></i>
-                  </li>
-                ) : (
-                  <li className="inline-block group relative" key={menu.menu}>
-                    <Link href={menu.link == "" ? "#" : menu.link}>
-                      <a className="mr-4 px-8 py-4 text-textColor">
-                        {menu.menu}
-                      </a>
-                    </Link>
-                    <ul
-                      className={
-                        menu.submenu[0].page != ""
-                          ? "  hidden group-hover:block subMenu"
-                          : "hidden"
-                      }
-                    >
-                      {menu.submenu[0].page != "" &&
-                        menu.submenu.map((p) => (
-                          <Link href={`/${p.pagelink}`} key={p.page}>
-                            <a className="hover:text-primaryColor text-textColor hover:font-extralight z-10  ">
-                              <li
-                                className="rounded-sm 
+                    {menu.submenu[0].page != "" &&
+                      menu.submenu.map((p) => (
+                        <Link href={`/${p.pagelink}`} key={p.page}>
+                          <a className="hover:text-primaryColor text-textColor hover:font-extralight z-10  ">
+                            <li
+                              className="rounded-sm 
                      hover:bg-light px-2 py-1 capitalize"
-                              >
-                                {p.page}
-                              </li>
-                            </a>
-                          </Link>
-                        ))}
-                    </ul>
-                  </li>
-                )
-              )}
+                            >
+                              {p.page}
+                            </li>
+                          </a>
+                        </Link>
+                      ))}
+                  </ul>
+                </li>
+              ))}
             </ul>
+            <li
+              // key={menu.class}
+              className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer"
+            >
+              <i
+                className="fas fa-search"
+                onClick={() => {
+                  setShowSearchBar(true);
+                }}
+              ></i>
+            </li>
           </nav>
         )}
 

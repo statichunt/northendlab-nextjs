@@ -49,7 +49,7 @@ export const getStaticProps = ({ params }) => {
   const filterAuthorBlog = getAllBlog.filter(
     (data) => kebabCase(data.frontmatter.author) == author
   );
-  console.log(authorData);
+
   return {
     props: {
       post: filterAuthor,

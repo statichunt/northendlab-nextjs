@@ -6,7 +6,7 @@ import ContactPage from "components/ContactPage/ContactPage";
 
 const Default = ({ posts, contactSlug, defaultSlug }) => {
   const { slug, frontmatter, content } = posts[0];
-  console.log(defaultSlug, contactSlug);
+
   return (
     <Layout title={slug}>
       {defaultSlug == contactSlug ? (
