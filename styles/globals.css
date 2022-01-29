@@ -22,7 +22,7 @@
     @apply font-primary text-h1_sm xl:text-h1 text-dark;
   }
   .title {
-    @apply sm:text-h3 text-h3_sm font-primary capitalize;
+    @apply sm:text-h3 text-h3_sm font-primary capitalize text-dark hover:opacity-60;
   }
   .subTitle {
     @apply text-textLight mb-4 font-secondary font-normal sm:font-semibold sm:text-base text-small;
