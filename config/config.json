@@ -5,7 +5,8 @@
     "pagination": 4,
     "sharePost": true,
     "contactFormAction": "https://airform.io/faruk.themefisher@gmail.com",
-    "logo": "/images/logo/logo.png"
+    "logo": "/images/logo/logo.png",
+    "showSearch": true
   },
 
   "footer": {

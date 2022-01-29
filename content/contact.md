@@ -2,7 +2,7 @@
 title: "Contact Us"
 draft: false
 description: "this is meta description"
-image: "/images/contact.png"
+image: "/images/contact.jpg"
 layout: contact
 ---
 

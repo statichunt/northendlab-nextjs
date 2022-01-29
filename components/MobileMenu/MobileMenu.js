@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import menubar from "../../config/menu.json";
 import Link from "next/dist/client/link";
+import config from "../../config/config.json";
 
 const MobileMenu = ({ isOpen, showSearchbar, toggle, setShowSearchBar }) => {
   const [isDropDown, setDropDown] = useState(false);
+  const { showSearch } = config.perameter;
   const handleToggle = () => {
     setShowSearchBar(true);
     toggle();
@@ -26,7 +28,7 @@ const MobileMenu = ({ isOpen, showSearchbar, toggle, setShowSearchBar }) => {
       >
         <ul className=" w-full">
           {header.map((menu) =>
-            menu.class ? (
+            showSearch && menu.class ? (
               <li
                 key={menu.class}
                 className="mr-4 mt-8 px-8 py-4 text-textColor text-center block cursor-pointer"

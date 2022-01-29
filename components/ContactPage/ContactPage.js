@@ -50,14 +50,15 @@ const ContactPage = ({ post }) => {
                 <input
                   type="submit"
                   value="Submit"
-                  className="inputField bg-primaryColor text-center text-white"
+                  className="inputField bg-primaryColor text-center text-white cursor-pointer
+                  "
                 />
               </div>
             </form>
           </div>
         </div>
-        <div className="flex justify-center items-center">
-          <div className="w-10/12 h-h600 relative">
+        <div className="flex justify-center items-center w-full">
+          <div className="mt-16 relative hidden lg:block h-96 lg:w-96">
             <Image
               src={frontmatter.image}
               alt="abc"

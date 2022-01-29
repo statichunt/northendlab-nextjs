@@ -14,25 +14,33 @@ const Pagination = ({ numOfPage, page }) => {
       <ul>
         {hasPrevPage && (
           <Link href={`/page/${page - 1}`}>
-            <a className="text-textColor rounded-md text-xs font-primary mr-4 px-4 py-2 hover:bg-primaryColor hover:text-white">{`<<`}</a>
+            <a className="relative cursor-pointer inline-block h-10 w-10 hover:bg-primaryColor hover:text-white rounded-md font-primary  text-xs mr-4 text-textColor ">
+              {" "}
+              <li className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{`<<`}</li>
+            </a>
           </Link>
         )}
         {pageList.map((p) => (
           <Link key={p} href={`/page/${p}`}>
             <a
-              className={`px-4 py-2 hover:bg-primaryColor hover:text-white ${
+              className={`w-10 h-10 inline-block hover:bg-primaryColor hover:text-white relative ${
                 page == p
-                  ? "paginationActive mr-4 rounded-md"
-                  : "bg-white text-textColor mr-4 rounded-md "
+                  ? "paginationActive mr-4 rounded-md "
+                  : "bg-white text-textColor mr-4 rounded-md"
               } `}
             >
-              {p}
+              <li className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                {p}
+              </li>
             </a>
           </Link>
         ))}
         {hasNextPage && (
           <Link href={`/page/${page + 1}`}>
-            <a className="hover:text-white rounded-md font-primary text-textColor text-xs mr-4 px-4 py-2 hover:bg-primaryColor">{`>>`}</a>
+            <a className="absolute inline-block h-10 w-10 hover:bg-primaryColor hover:text-white rounded-md font-primary  text-xs mr-4 text-textColor ">
+              {" "}
+              <li className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{`>>`}</li>
+            </a>
           </Link>
         )}
       </ul>

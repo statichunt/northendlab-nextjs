@@ -5,7 +5,7 @@ import React from "react";
 const CallToAction = ({ callToaction }) => {
   const { frontmatter } = callToaction;
   return (
-    <div className="lg:w-2/3 w-full bg-black mx-auto px-4 py-8 my-8">
+    <div className="lg:w-3/4 w-full bg-black mx-auto px-4 py-8 my-8 rounded-lg">
       <div className="grid lg:grid-cols-3">
         <div className="mx-auto">
           <div className="w-48 h-80 relative mx-auto">

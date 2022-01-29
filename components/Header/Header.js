@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/dist/client/link";
-import Navlogo from "../../config/config.json";
+import config from "../../config/config.json";
 import menubar from "../../config/menu.json";
 import { useState } from "react";
 import Search from "components/Search/Search";
@@ -21,30 +21,30 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
   };
 
   const { header } = menubar;
-  const { logo } = Navlogo.perameter;
+  const { logo, showSearch } = config.perameter;
 
   return (
     <>
       <header
         className={
           navbar
-            ? `${showSearchbar ? "header py-0" : "header"} top-0  ${
+            ? `${showSearchbar ? "header " : "header"} top-0  ${
                 isFixed ? "lg:fixed sticky" : "sticky"
               }  z-40 bg-white shadow-lg`
-            : `${showSearchbar ? "header py-0 " : "header"} ${
+            : `${showSearchbar ? "header  " : "header"} ${
                 isFixed ? "lg:fixed sticky" : "sticky"
               }  z-40 top-0 `
         }
       >
         {showSearchbar ? (
           <div className=" w-full mx-auto  ">
-            <div className="flex items-center w-full bg-white px-6">
+            <div className="flex items-center justify-center w-full bg-white px-6">
               <input
                 type="text"
                 onChange={(e) => {
                   setShowSearchPosts(e.target.value);
                 }}
-                className="w-2/3 mx-auto py-8  outline-none text-2xl shadow-sm shadow-light px-6"
+                className="w-2/3  py-4  outline-none text-2xl  px-6"
                 placeholder="Tyepe Here"
                 autoFocus
               />{" "}
@@ -123,14 +123,16 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
                 </li>
               ))}
             </ul>
-            <li className="mr-4 px-8 py-4 text-textColor  cursor-pointer hidden lg:inline-block">
-              <i
-                className="fas fa-search"
-                onClick={() => {
-                  setShowSearchBar(true);
-                }}
-              ></i>
-            </li>
+            {showSearch && (
+              <li className="mr-4 px-8 py-4 text-textColor   hidden lg:inline-block">
+                <i
+                  className="fas fa-search cursor-pointer"
+                  onClick={() => {
+                    setShowSearchBar(true);
+                  }}
+                ></i>
+              </li>
+            )}
           </nav>
         )}
 

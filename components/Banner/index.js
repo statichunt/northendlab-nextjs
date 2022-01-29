@@ -6,7 +6,7 @@ const Banner = ({ bannerData }) => {
   return (
     <>
       <div className="w-full pb-10 sm:pb-0 h-h800 sm:h-h600  bg-bannerBg bg-no-repeat bg-cover relative  flex justify-center items-center">
-        <div className="flex flex-wrap absolute bottom-0 w-full lg:w-2/3 mx-auto mb-10 sm:mb-0 ">
+        <div className="flex flex-wrap absolute bottom-0 w-full lg:w-3/4 mx-auto mb-10 sm:mb-0 ">
           <div className="w-full md:w-1/3 sm:mt-6 my-0 flex justify-center">
             <Image
               src={bannerData.frontmatter.contentImage}
