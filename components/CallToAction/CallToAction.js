@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const CallToAction = ({ callToaction }) => {
@@ -20,9 +21,11 @@ const CallToAction = ({ callToaction }) => {
             {frontmatter.title}
           </h2>
           <p className="text-light">{frontmatter.excerpt}</p>
-          <a className="bg-primaryColor py-2 px-4 text-white text-base my-6 inline-block">
-            {frontmatter.button}
-          </a>
+          <Link href="#">
+            <a className="bg-primaryColor py-2 px-4 text-white text-base my-6 inline-block rounded-lg">
+              {frontmatter.button}
+            </a>
+          </Link>
         </div>
       </div>
     </div>

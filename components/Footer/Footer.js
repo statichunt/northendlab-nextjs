@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <div className="container mx-auto text-center border-t border-borderColor mt-8">
-      <footer className=" contentContainer">
+      <footer className=" xl:w-2/3 w-full px-2 sm:px-8 mx-auto">
         <div className="flex lg:justify-between mt-4 flex-col lg:flex-row justify-center items-center'">
           <div className="mx-auto lg:mx-px flex lg:justify-start justify-center items-center my-6 lg:w-1/3 w-full">
             {" "}

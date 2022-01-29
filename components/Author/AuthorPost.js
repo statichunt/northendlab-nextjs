@@ -9,34 +9,31 @@ const AuthorPost = ({ posts }) => {
     <div className="w-full  shadow-lg">
       {posts.map((d) => (
         <div
-          className=" border-b border-borderColor py-8 md:w-11/12 mx-auto "
+          className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
           key={d.slug}
         >
-          <Link
-            href={{
-              pathname: "/posts/[posts]",
-              query: { posts: d.slug },
-            }}
-          >
+          <Link href={`/posts/${d.slug}`}>
             <a>
-              <h3 className="title ">{d.frontmatter.title}</h3>
+              <h3 className="title">{d.frontmatter.title}</h3>
             </a>
           </Link>
           <p className="subTitle">
-            <Link
-              href={{
-                pathname: "/author/[author]",
-                query: {
-                  author: kebabCase(d.frontmatter.author),
-                },
-              }}
-            >
-              {d.frontmatter.author}
-            </Link>{" "}
-            {dateFormate(d.frontmatter.date)},{" "}
+            <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
+              <a className="mr-2">
+                <i className="fas fa-user pr-1"></i>
+                {d.frontmatter.author},
+              </a>
+            </Link>
+            <span className="mr-2">
+              <i className="fas fa-calendar-alt pr-1"></i>{" "}
+              {dateFormate(d.frontmatter.date)},
+            </span>{" "}
             {d.frontmatter.categories.map((c) => (
               <Link href={`/categories/${kebabCase(c)}`} key={c}>
-                <a className="mr-2">{`${c}`}</a>
+                <a className="mr-2">
+                  <i className="fas fa-list pr-1"></i>
+                  {`${c}`}
+                </a>
               </Link>
             ))}
           </p>
@@ -49,8 +46,8 @@ const AuthorPost = ({ posts }) => {
           ></div>
           <Link
             href={{
-              pathname: "/posts/[posts]",
-              query: { posts: d.slug },
+              pathname: `/posts/${d.slug}`,
+              query: d.slug,
             }}
           >
             <a className="postButton">Read more</a>

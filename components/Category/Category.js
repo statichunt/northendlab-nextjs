@@ -11,11 +11,11 @@ const Category = ({ posts, category }) => {
   }, []);
 
   return (
-    <div className="w-full lg:w-1/2 mx-auto">
+    <div className="w-full lg:w-2/3 mx-auto">
       <h2 className="heading  xsm:px-8">
         Posts related to <span className="text-primaryColor">{category}</span>
       </h2>
-      <div className="w-full  shadow-lg px-8 sm:p-8">
+      <div className="contentContainer">
         {post.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "
@@ -28,12 +28,21 @@ const Category = ({ posts, category }) => {
             </Link>
             <p className="subTitle">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
-                <a>{d.frontmatter.author}</a>
+                <a className="mr-2">
+                  <i className="fas fa-user pr-1"></i>
+                  {d.frontmatter.author},
+                </a>
               </Link>
-              , {dateFormate(d.frontmatter.date)},{" "}
+              <span className="mr-2">
+                <i className="fas fa-calendar-alt pr-1"></i>{" "}
+                {dateFormate(d.frontmatter.date)},
+              </span>{" "}
               {d.frontmatter.categories.map((c) => (
                 <Link href={`/categories/${kebabCase(c)}`} key={c}>
-                  <a className="mr-2">{`${c}`}</a>
+                  <a className="mr-2">
+                    <i className="fas fa-list pr-1"></i>
+                    {`${c}`}
+                  </a>
                 </Link>
               ))}
             </p>

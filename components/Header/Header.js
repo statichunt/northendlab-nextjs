@@ -64,7 +64,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
         ) : (
           <nav
             className={
-              "flex justify-between items-center w-full px-2 xsm:px-8 xl:w-2/3 mx-auto "
+              "flex justify-between items-center w-full px-2 xsm:px-8 xl:w-3/4 mx-auto "
             }
           >
             <Link href="/">

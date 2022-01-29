@@ -7,7 +7,7 @@
     @apply w-full  py-8 mx-auto;
   }
   .contentContainer {
-    @apply xl:w-2/3 w-full px-2 sm:px-8 mx-auto  shadow-md shadow-light;
+    @apply xl:w-2/3 w-full px-2 sm:px-8 mx-auto md:mt-32 mt-20 shadow-md shadow-light;
   }
   .heading {
     @apply my-4 sm:my-8  text-h2_sm sm:text-h2 text-center font-primary text-dark font-bold;
@@ -16,7 +16,7 @@
     @apply px-8 py-4 my-4 border border-borderColor outline-none text-textColor;
   }
   .subMenu {
-    @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-dark/80 shadow-md font-primary z-10 -left-5;
+    @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-light text-textColor shadow-md font-secondary z-10 -left-5;
   }
   .greeting {
     @apply font-primary text-h1_sm xl:text-h1 text-dark;
@@ -28,7 +28,7 @@
     @apply text-textLight mb-4 font-secondary font-normal sm:font-semibold sm:text-base text-small;
   }
   .postButton {
-    @apply font-secondary text-primaryColor border py-2 px-4 rounded-lg font-bold border-primaryColor inline-block mt-4;
+    @apply font-secondary text-primaryColor border py-2 px-4 rounded-lg font-bold border-primaryColor inline-block mt-4 hover:bg-primaryColor hover:text-white;
   }
 
   .paginationActive {

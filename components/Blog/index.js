@@ -26,12 +26,21 @@ const Blog = ({ posts, page, pagination }) => {
             </Link>
             <p className="subTitle">
               <Link href={`/author/${kebabCase(d.frontmatter.author)}`}>
-                <a>{d.frontmatter.author}</a>
+                <a className="mr-2">
+                  <i className="fas fa-user pr-1"></i>
+                  {d.frontmatter.author},
+                </a>
               </Link>
-              , {dateFormate(d.frontmatter.date)},{" "}
+              <span className="mr-2">
+                <i className="fas fa-calendar-alt pr-1"></i>{" "}
+                {dateFormate(d.frontmatter.date)},
+              </span>{" "}
               {d.frontmatter.categories.map((c) => (
                 <Link href={`/categories/${kebabCase(c)}`} key={c}>
-                  <a className="mr-2">{`${c}`}</a>
+                  <a className="mr-2">
+                    <i className="fas fa-list pr-1"></i>
+                    {`${c}`}
+                  </a>
                 </Link>
               ))}
             </p>
