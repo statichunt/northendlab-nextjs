@@ -105,8 +105,12 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
                     {menu.submenu[0].page != "" &&
                       menu.submenu.map((p) => (
                         <Link href={`/${p.pagelink}`} key={p.page}>
-                          <a className="hover:text-primaryColor text-textColor hover:font-extralight z-10  ">
+                          <a
+                            key={p.page}
+                            className="hover:text-primaryColor text-textColor hover:font-extralight z-10  "
+                          >
                             <li
+                              key={p.page}
                               className="rounded-sm 
                      hover:bg-light px-2 py-1 capitalize"
                             >
@@ -119,10 +123,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
                 </li>
               ))}
             </ul>
-            <li
-              // key={menu.class}
-              className="mr-4 px-8 py-4 text-textColor inline-block cursor-pointer"
-            >
+            <li className="mr-4 px-8 py-4 text-textColor  cursor-pointer hidden lg:inline-block">
               <i
                 className="fas fa-search"
                 onClick={() => {

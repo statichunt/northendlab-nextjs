@@ -16,7 +16,7 @@ const Search = ({ showSearchPosts }) => {
     };
     getPosts();
   }, []);
-  console.log(search);
+
   let searchPost = search.filter((p) => {
     if (showSearchPosts === "") {
       return "";

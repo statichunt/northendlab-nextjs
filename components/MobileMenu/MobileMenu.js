@@ -29,7 +29,7 @@ const MobileMenu = ({ isOpen, showSearchbar, toggle, setShowSearchBar }) => {
             menu.class ? (
               <li
                 key={menu.class}
-                className="mr-4 mt-8 px-8 py-4 text-textColor text-center block"
+                className="mr-4 mt-8 px-8 py-4 text-textColor text-center block cursor-pointer"
               >
                 <i className={`${menu.class} `} onClick={handleToggle}></i>
               </li>
