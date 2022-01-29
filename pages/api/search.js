@@ -8,7 +8,7 @@ export default function handler(req, res) {
     posts = require("../../cache/data").posts;
     console.log(posts);
   } else {
-    posts = require("../../cache/data").posts;
+    posts = getAllBlogs("content/posts", false);
   }
 
   res.status(200).json(JSON.stringify(posts));
