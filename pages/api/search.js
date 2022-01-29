@@ -4,7 +4,7 @@ import { getAllBlogs } from "@/lib/posts";
 
 export default function handler(req, res) {
   let posts;
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "https://southlab-nextjs.netlify.app/") {
     posts = require("../../cache/data").posts;
   } else {
     posts = getAllBlogs("content/posts", false);
