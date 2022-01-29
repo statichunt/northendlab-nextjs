@@ -16,12 +16,12 @@ const MobileMenu = ({ isOpen, showSearchbar, toggle, setShowSearchBar }) => {
   };
   const { header } = menubar;
   return (
-    <div className={isOpen ? "block w-2/3 mx-auto" : "hidden"}>
+    <div className={isOpen ? "block w-full mx-auto" : "hidden"}>
       <nav
         className={
           showSearchbar
             ? "hidden"
-            : "flex justify-between items-center  w-2/3 mx-auto "
+            : "flex justify-between items-center bg-white  w-full mx-auto "
         }
       >
         <ul className=" w-full">

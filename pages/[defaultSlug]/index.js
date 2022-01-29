@@ -13,9 +13,7 @@ const Default = ({ posts, contactSlug, defaultSlug }) => {
         <ContactPage post={posts[0]}></ContactPage>
       ) : (
         <div className="container px-4 sm:px-10  my-10 font-secondary mx-auto">
-          <h1 className="my-8  text-h1 text-center font-primary">
-            {frontmatter.title}
-          </h1>
+          <h2 className=" heading">{frontmatter.title}</h2>
           <div
             className="markdown"
             dangerouslySetInnerHTML={{ __html: marked.parse(content) }}

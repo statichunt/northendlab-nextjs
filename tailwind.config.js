@@ -91,6 +91,9 @@ module.exports = {
         borderColor: themeStyle.color.themeColor.border,
         body: themeStyle.color.themeColor.body,
       },
+      screens: {
+        xsm: "420px",
+      },
     },
   },
 };

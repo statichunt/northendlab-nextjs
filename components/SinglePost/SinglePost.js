@@ -9,7 +9,9 @@ const SinglePost = ({ posts }) => {
   return (
     <div className="w-full lg:w-1/2 mx-auto shadow-lg p-8">
       <div className="font-primary">
-        <h3 className="font-semibold text-h3">{posts[0].frontmatter.title}</h3>
+        <h3 className="font-semibold text-h3_sm sm:text-h3">
+          {posts[0].frontmatter.title}
+        </h3>
         <p className="subTitle">
           <Link
             href={{

@@ -12,10 +12,10 @@ const Category = ({ posts, category }) => {
 
   return (
     <div className="w-full lg:w-1/2 mx-auto">
-      <h2 className="text-h2 font-primary text-dark font-bold p-8">
+      <h2 className="heading  xsm:px-8">
         Posts related to <span className="text-primaryColor">{category}</span>
       </h2>
-      <div className="w-full  shadow-lg p-8">
+      <div className="w-full  shadow-lg px-8 sm:p-8">
         {post.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "

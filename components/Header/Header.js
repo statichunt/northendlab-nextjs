@@ -29,10 +29,10 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
         className={
           navbar
             ? `${showSearchbar ? "header py-0" : "header"} top-0  ${
-                isFixed ? "fixed" : "sticky"
+                isFixed ? "lg:fixed sticky" : "sticky"
               }  z-40 bg-white shadow-lg`
             : `${showSearchbar ? "header py-0 " : "header"} ${
-                isFixed ? "fixed" : "sticky"
+                isFixed ? "lg:fixed sticky" : "sticky"
               }  z-40 top-0 `
         }
       >
@@ -64,7 +64,7 @@ const Header = ({ navbar, isOpen, toggle, isFixed, blog }) => {
         ) : (
           <nav
             className={
-              "flex justify-between items-center w-full px-8  xl:w-2/3 mx-auto "
+              "flex justify-between items-center w-full px-2 xsm:px-8 xl:w-2/3 mx-auto "
             }
           >
             <Link href="/">

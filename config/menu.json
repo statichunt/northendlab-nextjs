@@ -48,5 +48,15 @@
         }
       ]
     }
+  ],
+  "footerMenu": [
+    {
+      "menu": "Home",
+      "link": "/"
+    },
+    {
+      "menu": "Contact",
+      "link": "/contact"
+    }
   ]
 }

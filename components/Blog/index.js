@@ -13,7 +13,7 @@ const Blog = ({ posts, page, pagination }) => {
 
   return (
     <div className="container mx-auto">
-      <div className="w-full lg:w-1/2 mx-auto shadow-lg p-8">
+      <div className="contentContainer">
         {currentPosts.map((d) => (
           <div
             className="font-primary border-b border-borderColor py-8 md:w-11/12 mx-auto "

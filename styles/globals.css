@@ -6,6 +6,12 @@
   .header {
     @apply w-full  py-8 mx-auto;
   }
+  .contentContainer {
+    @apply xl:w-2/3 w-full px-2 sm:px-8 mx-auto  shadow-md shadow-light;
+  }
+  .heading {
+    @apply my-4 sm:my-8  text-h2_sm sm:text-h2 text-center font-primary text-dark font-bold;
+  }
   .inputField {
     @apply px-8 py-4 my-4 border border-borderColor outline-none text-textColor;
   }
@@ -13,7 +19,7 @@
     @apply uppercase py-2 px-3 absolute w-60 border-dark  bg-white shadow-dark/80 shadow-md font-primary z-10 -left-5;
   }
   .greeting {
-    @apply font-primary text-h1_sm lg:text-h1 text-dark;
+    @apply font-primary text-h1_sm xl:text-h1 text-dark;
   }
   .title {
     @apply sm:text-h3 text-h3_sm font-primary capitalize;
@@ -38,10 +44,11 @@
      prose-headings:font-primary
      prose-p:font-secondary prose-p:font-bold
     prose-li:font-primary
-    prose-h1:text-h1
+    sm:prose-h1:text-h1
     prose-h2:text-h2
     prose-h3:text-h3
     prose-h4:text-h4
+    prose-h1:text-h1_sm
     prose-h1:my-5
     prose-h2:mt-0
     prose-h2:mb-0
