@@ -14,13 +14,14 @@ function postData() {
       "utf-8"
     );
 
-    const { data: frontmatter } = matter(markdownWithMeta);
+    const { data: frontmatter, content } = matter(markdownWithMeta);
     const category = frontmatter.categories;
 
     return {
       slug,
       frontmatter,
       category,
+      content,
     };
   });
   const filterByDate = posts.filter(

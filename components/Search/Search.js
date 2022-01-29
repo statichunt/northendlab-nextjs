@@ -24,7 +24,7 @@ const Search = ({ showSearchPosts }) => {
       return p;
     } else if (p.content.toLowerCase().includes(showSearchPosts)) {
       return p;
-    } else if (p.categoryto.includes(showSearchPosts)) {
+    } else if (p.category.includes(showSearchPosts)) {
       return p;
     }
   });
