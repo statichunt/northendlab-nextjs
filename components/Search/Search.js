@@ -16,15 +16,15 @@ const Search = ({ showSearchPosts }) => {
     };
     getPosts();
   }, []);
-
+  console.log(search);
   let searchPost = search.filter((p) => {
     if (showSearchPosts === "") {
       return "";
-    } else if (p.frontmatter.title.includes(showSearchPosts)) {
+    } else if (p.frontmatter.title.toLowerCase().includes(showSearchPosts)) {
       return p;
-    } else if (p.content.includes(showSearchPosts)) {
+    } else if (p.content.toLowerCase().includes(showSearchPosts)) {
       return p;
-    } else if (p.category.includes(showSearchPosts)) {
+    } else if (p.categoryto.includes(showSearchPosts)) {
       return p;
     }
   });
